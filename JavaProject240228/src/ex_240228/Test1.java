@@ -13,6 +13,9 @@ public class Test1 {
 		// 반드시 확인해야함. 확인하는 도구로 사용함. 
 		// 실행. 
 		System.out.println("Hellow World.!!!");
+		
+		// 본인들이 패키지 하나 만들고, 클래스 하나 만들고 
+		// 콘솔 출력 해보기. 
 
 	}
 
