@@ -21,6 +21,8 @@ public class Ex_3_Scanner {
 		System.out.println("입력한 이름은 : " + nameString );
 		System.out.println("입력한 나이 : " + age );
 
+		
+		
 	}
 
 }
