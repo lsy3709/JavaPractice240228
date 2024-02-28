@@ -100,6 +100,55 @@ public class Ex_2_Variable {
 		lsyPerson.doDance();
 		lsyPerson.showInfo();
 		
+		// 특수 문자 출력 해보기. 
+		System.out.println("특수 문자 \b : " + '\b' );
+		// 그나마 쓰는 이스케이프 문자 
+		System.out.println("특수 문자 \t : " + '\t' + "샘플" );
+		System.out.println("특수 문자 \n : " + '\n' + "샘플" );
+		System.out.println("특수 문자 \f : " + '\f' + "샘플" );
+		System.out.println("특수 문자 \r : " + '\r' + "샘플" );
+		// 그나마 쓰는 이스케이프 문자 
+		System.out.println("특수 문자 \" : " + '\"' + "샘플" );
+		System.out.println("특수 문자 \\ : " + '\\' + "샘플" );
+		
+		// null, 아무것도 없다라고 표현도 하는데, 레퍼런스가 할당이 안되었다. 
+		// 기본형에서 사용 안함. 
+		String strTest = null ;
+
+		// int testNumber = null;
+		
+		// 상수 , final , 변하지 않는다. 즉, 재할당 안된다. 
+		final int finalNumber = 0;
+		// finalNumber = 2;
+		
+		// var 동적 변수 할당 부분은 잠시 대기, 현재는 타입을 지정해서 선언하는 방식으로 연습. 
+		// 그래서 패스 
+		
+		// 타입 변환, 캐스팅( 던진다), 
+		// 작은 집 -> 큰집으로 갈 때, 문제가 없다. 
+		// 큰 집 -> 작은 집으로 갈 때, 문제가 있고, 값의 손실이 발생이 한다. 기본형. 
+		byte byteNumber1 = 10;
+		long longNumber1 = byteNumber1;
+		System.out.println("타입 변환 테스트 작은 집 -> 큰 집 갈경우(longNumber1) : "+ longNumber1);
+		
+		// 큰 집 -> 작은 집 갈 경우 . 문제가 발생, 문법 검사기 걸렸음. 
+		// 강제로 형을 변환을 하기 위해서, 연산자, 캐스팅 연산자, 예) (강제로 변환할 형) 변수
+		// 개념적인 이야기이고, 실무에서는 사용을 안한다.
+		int intNumber2 = 130;
+		byte byteNumber2 = (byte)intNumber2;
+		System.out.println("타입 변환 테스트 큰 집 -> 작은 집 갈경우 강제로 형변환");
+		System.out.println("byteNumber2 : " + byteNumber2);
+		
+		// 레퍼런스에서는 , 포함관계로 설명을 하는데, 상속에 대해서 설명 후 구체적으로 하기
+		// 부모 클래스, 자식 클래스 개념이 나오고, 
+		// 자식 타입 -> 부모 타입 변경하거나
+		// 부모 타입 -> 자식 타입 변경하거나 
+		
 	}
 
 }
+
+
+
+
+
