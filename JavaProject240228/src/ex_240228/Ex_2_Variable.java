@@ -2,10 +2,14 @@ package ex_240228;
 
 
 class Person {
+	// 구성이, 1) 필드(변수) 2) 메서드(함수) 
 	private String userName;
 	private String userEmail;
 	
+	// 클래스명과 이름은 동일하고, 생성자라고한다. 메서드와는 다릅니다. 
+	// 역할 : 초기화를 해주는 역할. 
 	public Person( String name, String email) {
+		// this 는 자기 자신을 가리키는 역할, 누구를 가리키냐 ? Person 의 필드를 가리킴. 
 		this.userName = name;
 		this.userEmail = email;
 	

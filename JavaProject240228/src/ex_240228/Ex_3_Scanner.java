@@ -12,6 +12,8 @@ public class Ex_3_Scanner {
 		// System , 임포트 없이도 사용할수 있는 내장 기능. 
 		Scanner scanner = new Scanner(System.in);
 		// 하나의 문자열을 읽을 때 사용하는 메서드  next()
+		// System.in , 유저로부터 입력 받은 내용을 바이트로 읽고 
+		// scanner 가 문자열로 변환 하거나 또는 숫자로 변환 해준다. 
 		String nameString = scanner.next();
 		
 		// 나이를 입력 후 받을 변수를 

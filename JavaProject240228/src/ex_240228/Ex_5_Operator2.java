@@ -28,6 +28,7 @@ public class Ex_5_Operator2 {
 		// 삼항 다항식 
 		int x = 10;
 		int y = 12; 
+		// (조건식) ? (참일때 실행할 문장) : (거짓일때 실행할 문장) 
 		int result = (x>y) ? x : y;
 		System.out.println("result : " + result);
 		
