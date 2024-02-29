@@ -1,5 +1,7 @@
 package ex_240229;
 
+import java.util.Scanner;
+
 public class Ex_6_Array_test {
 
 	public static void main(String[] args) {
@@ -34,8 +36,45 @@ public class Ex_6_Array_test {
 		for(int i = 0; i<arrayLunchMenuString.length; i++) {
 			System.out.println("먹고 싶은 메뉴 목록 : " + arrayLunchMenuString[i] + " 입니다.");
 		}
-		
+		//Math.random() : 0 < x < 1 사이의 실수를 발생 시키고, 
+		//Math.random()*3 : 0 < x < 1 사이의 실수를 발생 시키고,
+		//(int)(Math.random()*3) : 강제로 형(타입) , 정수형으로 변경함. 
+		// 
+	    System.out.println("1이상 ~ 4 미만 사이의 난수 1개 발생 : " + (int)(Math.random()*3 + 1)  );
+	    System.out.println("0이상 ~ 3 미만 사이의 난수 1개 발생 : " + (int)(Math.random()*3)  );
+	    System.out.println("점심 추천 메뉴 프로그램 ===================");
+	    // 추천메뉴 while
+	    while (true) {
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("1번: 점심 추천 메뉴 프로그램 , 0번: 종료시 누르기 >>");
+			int number = scanner.nextInt();
+
+			// 조건문 분기
+			if (number == 0) {
+				System.out.println("프로그램 종료합니다.");
+				
+				// 사용 안하는 메모리는 반납을 꼭 해주기.
+				scanner.close();
+				break;
+			} else {
+			// number == 1 인경우, 양수만 5개 더하는 프로그램.
+				randomPickLunchMenu();
+
+			}
+			
+		}
 
 	}
+	 // 밥먹고 나서, 자동으로 점심 메뉴 추천 해주는 함수 만들기.
+	public static void randomPickLunchMenu() {
+		String[] arrayLunchMenuString = {"김밥","국밥","우동","아구찜","된장찌개","비빔밥"};
+		
+		int number = (int)(Math.random()*6);
+		System.out.println("추천 메뉴 : " + arrayLunchMenuString[number]);
+	}
+	
 
 }
+
+
+
