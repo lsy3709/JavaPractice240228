@@ -2,7 +2,7 @@ package ex_240229;
 
 import java.util.Scanner;
 
-public class Ex_9_Array_test5 {
+public class Ex_09_Array_test5_ {
 
 	public static void main(String[] args) {
 		while (true) {
@@ -30,6 +30,9 @@ public class Ex_9_Array_test5 {
 
 	}
 
+	// 메서드 정의를 하고, 매개변수에 배열 타입으로 정의 했음. 
+	// 그래서, 함수를 호출할 때, 인자값으로 배열을 전달이 가능함. 
+	// 전달시, 메모리 위치 주소값을 전달 = 레퍼런스 변수 = 참조형 변수 = 인스턴스 전달. 
 	public static void showAggregation(int[] intArray) {
 		// 나중에 출력하기 위한 준비물
 		int max = 0;

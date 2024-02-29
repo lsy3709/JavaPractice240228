@@ -2,7 +2,7 @@ package ex_240229;
 
 import java.util.Scanner;
 
-public class Ex_2_switch {
+public class Ex_02_switch {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);

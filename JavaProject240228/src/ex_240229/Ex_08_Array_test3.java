@@ -2,7 +2,7 @@ package ex_240229;
 
 import java.util.Scanner;
 
-public class Ex_8_Array_test3 {
+public class Ex_08_Array_test3 {
 
 	public static void main(String[] args) {
 		// 양수 5개를 입력받아서, 배열에 저장하고, 제일 큰수를 출력하기. 합계, 평균, 최솟값도 구하기. 

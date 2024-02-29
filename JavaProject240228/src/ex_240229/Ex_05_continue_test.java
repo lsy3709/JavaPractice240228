@@ -3,7 +3,7 @@ package ex_240229;
 import java.util.Scanner;
 import java.util.function.BiConsumer;
 
-public class Ex_5_continue_test {
+public class Ex_05_continue_test {
 
 	public static void main(String[] args) {
 		// 양수만 더하기.

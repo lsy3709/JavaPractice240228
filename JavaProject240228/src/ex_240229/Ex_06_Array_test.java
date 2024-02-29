@@ -2,7 +2,7 @@ package ex_240229;
 
 import java.util.Scanner;
 
-public class Ex_6_Array_test {
+public class Ex_06_Array_test {
 
 	public static void main(String[] args) {
 		//배열, 크기 고정이고, 변경이 안됨. 
