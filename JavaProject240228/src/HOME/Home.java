@@ -1,10 +1,10 @@
-package TTest;
+package HOME;
 
-public class TTest2 {
+public class Home {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("ABC");
+		System.out.println("과제");
 	}
 
 }
