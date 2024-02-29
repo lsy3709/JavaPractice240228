@@ -2,7 +2,7 @@ package ex_240229;
 
 import java.util.Scanner;
 
-public class Ex_3_Nestedfor {
+public class Ex_4_Nestedfor {
 
 	public static void main(String[] args) {
 
@@ -37,7 +37,7 @@ public class Ex_3_Nestedfor {
 		for(int i = 1; i<=number; i++) {
 			for(int j = 1; j<10; j++) {
 				System.out.print(i + "x" + j + "=" + i*j);
-				System.out.println('\t');
+				System.out.print('\t');
 			}
 			System.out.println(); // 한단 끝나면 줄넘김. 
 		}
