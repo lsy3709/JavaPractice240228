@@ -2,6 +2,7 @@ package ex_240228;
 
 
 public class Ex_1_Hello {
+	// class , 수납도구 , 1)필드 2) 메서드 가지고 있다.
 
 	// public: (접근지정자) 모든 위치에서 접근이 가능.
 	// static : (전역처럼 사용이됨) 클래스 메소드(함수), 매개변수 2개이고, 리턴값도 있다(리턴타입 존재)
@@ -17,7 +18,7 @@ public class Ex_1_Hello {
 		return a + b;
 	}
 
-	// void : 리턴값이 없다는 뜻
+	// void : 리턴값이 없다는 뜻, 공허, 아무것도 없다. 
 	// main : 메소드 명
 	// (String[] args) : 매개변수 정의 부분, 타입이 배열로 정의가 되어 있음.
 	// String[] , 배열인데, 타입이 : String (문자열), vs 한문자 의미 (char)
