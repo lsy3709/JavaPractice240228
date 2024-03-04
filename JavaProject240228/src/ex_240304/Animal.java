@@ -1,5 +1,7 @@
 package ex_240304;
 
+import java.util.Iterator;
+
 //클래스 정의
 public class Animal {
 	// 하나의 클래스에는 , 각각 한개씩 원래 사용을함.
@@ -18,6 +20,8 @@ public class Animal {
 	public String name;
 	public int age;
 	public String soundType;
+	// 동물이 좋아하는 음식. 
+	public String[] favoriateFood;
 
 	// 생성자가, 매개변수가 2개인 생성자가 정의가 안되었다고함.
 	// Animal ani4 = new Animal("ani4", 10); 이런식으로 초기화를 할려고 하니. 없데 .
@@ -47,8 +51,17 @@ public class Animal {
 		this.age = age;
 		this.soundType = soundType;
 	}
+	
+	// 매개변수가 4개인, 생성자를 만들기, 
+	public Animal(String name, int age, String soundType, String[] likeFoods) {
+		this.name = name;
+		this.age = age;
+		this.soundType = soundType;
+		this.favoriateFood = likeFoods;
+	}
 
 	// 메서드 : 1) 소개하는 기능, 2) 소리 기능.
+	// 추가 : 좋아하는 음식을 출력하는 기능. 
 
 	public void introduceMethod() {
 //		 System.out.println("안녕하세요.! 현재는 더미로 작업중, 곧 동적으로 할 예정임.");
@@ -59,5 +72,23 @@ public class Animal {
 //		System.out.println("현재는, 더미로 소리를 냅니다. 나중에는 동적으로 할 예정. ");
 		System.out.println("제 소리는 요 : " + this.soundType);
 	}
+	
+	// String [] likeFoodList , 매개변수 이 부분을 this로 변경해보기. 
+//	public void likeFoodList(String [] likeFoodList) {
+//		for(int i = 0 ; i <likeFoodList.length; i++ ) {
+//			System.out.println("좋아하는 음식 : " + i + " 번: " + likeFoodList[i]);
+//		}
+//		
+//	}
+	
+	public void likeFoodList() {
+		for(int i = 0 ; i <this.favoriateFood.length; i++ ) {
+			System.out.println("좋아하는 음식 : " + i + " 번: " + this.favoriateFood[i]);
+		}
+		
+	}
 
 }
+
+
+
