@@ -34,7 +34,30 @@ public class Ex_01_try_catch_1 {
 		System.out.println("나눗수를 입력하세요>>");
 		y = scanner.nextInt();
 		
-		System.out.println("예외 발생시키기 : x/y(0) : " +  x/y);
+		// try catch finally 없이 , 비정상적이 종료 발생시켰고
+//		System.out.println("예외 발생시키기 : x/y(0) : " +  x/y);
+		
+		try {
+			System.out.println("예외 발생시키기 : x/y(0) : " +  x/y);
+			
+			// 디테일한 예외로 처리를 하고,
+			
+//		} catch (ArithmeticException e) {
+			
+			// 2번째, 포괄적인 예외로 처리하는 부분 
+		} catch (Exception e) {
+			System.out.println("0으로 나눌수 없습니다.");
+			System.out.println("오류의 원인 : "+ e.getMessage());
+		} 
+		finally {
+			// 예외 발생 여부 상관없이 무조건 실행함. 
+			// 보통, 해당 인스턴스 반납시 사용을 많이함. 
+			// 스캐너 인스턴스 닫을 때 사용함.
+			System.out.println("예외 처리를 후, finally 실행함.");
+			scanner.close();
+			
+		}
+		
 		
 		
 
