@@ -12,7 +12,7 @@ public class Circle { // extends Object 라는 말이 없지만, 생략이 되�
 	}
 	
 	public Circle(int radius) {
-		
+		this.radius = radius;
 	}
 	
 	public Circle(int radius, String name) {
@@ -60,6 +60,14 @@ public class Circle { // extends Object 라는 말이 없지만, 생략이 되�
 	public void showInfo() {
 		
 		System.out.println("이름 : " + this.name+ ", 크기 : " + this.radius +", 원의 넓이: " + this.radius*this.radius*PI);
+	}
+	// callByValue 예제 
+	public void increase(int n ) {
+		n = n+1;
+		// 지역변수, 해당 메서드에서 호출이 되었을 때, 변수가 있다가, 
+		// 메서드 실행이 끝나면, 소멸한다. 
+		System.out.println("지역 변수 n : " + n);
+		
 	}
 	
 	// 클래스의 필드에 접근 지정자를 private 로 해서, 외부에서 접근이 안되는 부분 확인하고, 
