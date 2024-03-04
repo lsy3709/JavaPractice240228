@@ -56,6 +56,7 @@ public class Ex_02_class_1 {
 		// 그래서, 본인이 받아서 저장해 놓은걸 사용하면 됨. , this로 대체.
 //		ani6.likeFoodList(likeFoodList);
 		ani6.likeFoodList();
+
 		
 	}
 
