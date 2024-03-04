@@ -1,7 +1,23 @@
 package ex_240304;
 
-public class Circle {
+public class Circle { // extends Object 라는 말이 없지만, 생략이 되어 있음. 
 	private int radius;
+	
+	// 기본 생성자 만들기 
+	public Circle() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Circle(int radius, String name) {
+		// 모든 클래스는 암묵적으로 , Object 라는 클래스를 상속 받고 있다. 
+		// 자식 클래스는 반드시 , 부모 클래스가 초기화가 되고 나서, 사용이 가능함. 
+		// super() 로 부모클래스를 초기화를 했다.(생성자 호출)
+		super(); // 앞에서는 생략하고 사용 했음. 
+		this.radius = radius;
+		this.name = name;
+	}
+
+	// 매개변수2개인 생성자도 만들기. 
 	
 	// 멤버가 private 라서, 현재 게터 함수를 이용해서, 해당 필드에 값 접근함. 
 	public int getRadius() {
