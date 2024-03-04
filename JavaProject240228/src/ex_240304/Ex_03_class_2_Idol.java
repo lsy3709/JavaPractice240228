@@ -30,6 +30,7 @@ public class Ex_03_class_2_Idol {
 		Idol idol = new Idol(groupNameString, groupMember, groupAlbum);
 		idol.introduceMember();
 		idol.introduceAlbum();
+		scanner.close();
 		
 		
 
