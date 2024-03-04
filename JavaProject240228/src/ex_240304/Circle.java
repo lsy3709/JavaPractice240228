@@ -2,10 +2,17 @@ package ex_240304;
 
 public class Circle { // extends Object 라는 말이 없지만, 생략이 되어 있음. 
 	private int radius;
+	private String name;
+	private int price;
+	private final static Double PI = 3.14; 
 	
 	// 기본 생성자 만들기 
 	public Circle() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public Circle(int radius) {
+		
 	}
 	
 	public Circle(int radius, String name) {
@@ -15,6 +22,13 @@ public class Circle { // extends Object 라는 말이 없지만, 생략이 되�
 		super(); // 앞에서는 생략하고 사용 했음. 
 		this.radius = radius;
 		this.name = name;
+	}
+
+	public Circle(int radius, String name, int price) {
+		this(radius,name);
+//		this.radius = radius;
+//		this.name = name;
+		this.price = price;
 	}
 
 	// 매개변수2개인 생성자도 만들기. 
@@ -36,9 +50,7 @@ public class Circle { // extends Object 라는 말이 없지만, 생략이 되�
 		this.name = name;
 	}
 
-	private String name;
-	private final static Double PI = 3.14; 
-	
+		
 	// 기능1, 면적 구하기
 	public void calcGetArea() {
 		System.out.println("원의 넓이: " + this.radius*this.radius*PI);

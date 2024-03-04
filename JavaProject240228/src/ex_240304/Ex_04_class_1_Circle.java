@@ -23,12 +23,16 @@ public class Ex_04_class_1_Circle {
 		// getter를 이용해서 해당 정보 접근.
 		System.out.println("getter 이용해서, 멤버 접근 하기. name: " + koreanPizza.getName());
 		System.out.println("getter 이용해서, 멤버 접근 하기. radius: " + koreanPizza.getRadius());
-		
-		
-		// 김치전 
+
+		// 김치전
 		Circle kimchiPizza = new Circle(20, "김치전");
 		kimchiPizza.calcGetArea();
 		kimchiPizza.showInfo();
+
+		// 감자전
+		Circle koreanPotatoPizza = new Circle(20, "감자전",15000);
+		koreanPotatoPizza.calcGetArea();
+		koreanPotatoPizza.showInfo();
 
 	}
 
