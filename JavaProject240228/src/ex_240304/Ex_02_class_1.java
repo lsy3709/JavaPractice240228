@@ -1,36 +1,5 @@
 package ex_240304;
 
-// 클래스 정의
- class Animal {
-	 // 하나의 클래스에는 , 각각 한개씩 원래 사용을함. 
-	 // 지금은 예시로, 클래스 안에 또다른 클래스를 보여주기용. 
-	 // 파일 분리함. 
-	 
-	 // 클래스 : 설계도면, 공장, 
-	 // 실체, 제품 : 인스턴스라고 부른다. 
-	 
-	 // 구성 : 1) 멤버(변수), 2) 메서드(기능)
-	 
-	 // private를 사용하면, 외부 접근이 안되어서, 추후 setter/getter 로 접근 하는 방법 알려드릴 예정. 
-	 // 그래서, 현재는 public 으로 변경하기. 
-//	 private String name;
-//	 private int age;
-	 public String name;
-	 public int age;
-	 
-	 // 메서드 : 1) 소개하는 기능, 2) 소리 기능. 
-	 
-	 public void introduceMethod() {
-		 System.out.println("안녕하세요.! 현재는 더미로 작업중, 곧 동적으로 할 예정임.");
-	}
-	 
-	 public void soundMethod() {
-		 System.out.println("현재는, 더미로 소리를 냅니다. 나중에는 동적으로 할 예정. ");
-	}
-	 
-	
-}
-
 public class Ex_02_class_1 {
 
 	public static void main(String[] args) {
@@ -53,7 +22,23 @@ public class Ex_02_class_1 {
 		ani1.age = 10;
 		ani1.introduceMethod();
 		ani1.soundMethod();
+
+		ani2.name = "ani2";
+		ani2.age = 10;
+		ani2.introduceMethod();
+		ani2.soundMethod();
 		
+		// 불만사항, 요구사항
+		// 1 클래스 내부에 또다른 클래스가 있는 부분 -> 파일 분리 했음. 현재 같은 패키지 내부로 
+		// 2 인스턴스 생성시 매번 인스턴스에 점을 찍고, 재할당하는 부분, 한번에 ?
+		// -> 예를들어서, 선언시, 기본값을 미리 할당하고, 생성하기. 
+		// Animal ani4 = new Animal("ani4", 10);
+		// 3 해당 기능들이 , 각각의 동물의 이름이나, 나이등을 각각 출력하는 방법은 없을 까. ?
+		
+		// 매개변수 2개인 생성자로 호출후, 동적으로 사용해보기.
+		Animal ani4 = new Animal("ani4", 10);
+		ani4.soundMethod();
+		ani4.introduceMethod();
 		
 		
 		
