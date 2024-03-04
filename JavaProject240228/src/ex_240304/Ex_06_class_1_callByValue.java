@@ -24,6 +24,15 @@ public class Ex_06_class_1_callByValue {
 		increase2(c1);
 		
 		System.out.println("increase2 메서드 호출 후 값 확인. c1 의 c1.radius 값 조회 : " +  c1.getRadius());
+		
+		
+		// call by ref , 배열 예제, 배열 참조형(인스턴스)
+		int [] a = {1,2,3,4,5};
+		increase3(a);
+		for(int num : a ) {
+			System.out.println("배열 a의 요소 출력하기 , " + num);
+		}
+		
 
 	}
 	
@@ -33,6 +42,13 @@ public class Ex_06_class_1_callByValue {
 		// 0x100에 위치한 값을 변경을 하니, 
 		// c1 도 영향을 받나요, 안 받나요? 받죠? 받아요. !!
 		c100.setRadius(200); ;
+		
+	} 
+	
+	public static void increase3(int [] array) {
+		for(int i=0; i<array.length; i++) {
+			array[i]++;
+		}
 		
 	} 
 
