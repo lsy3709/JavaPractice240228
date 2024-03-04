@@ -73,9 +73,17 @@ public class Animal {
 		System.out.println("제 소리는 요 : " + this.soundType);
 	}
 	
-	public void likeFoodList(String [] likeFoodList) {
-		for(int i = 0 ; i <likeFoodList.length; i++ ) {
-			System.out.println("좋아하는 음식 : " + i + " 번: " + likeFoodList[i]);
+	// String [] likeFoodList , 매개변수 이 부분을 this로 변경해보기. 
+//	public void likeFoodList(String [] likeFoodList) {
+//		for(int i = 0 ; i <likeFoodList.length; i++ ) {
+//			System.out.println("좋아하는 음식 : " + i + " 번: " + likeFoodList[i]);
+//		}
+//		
+//	}
+	
+	public void likeFoodList() {
+		for(int i = 0 ; i <this.favoriateFood.length; i++ ) {
+			System.out.println("좋아하는 음식 : " + i + " 번: " + this.favoriateFood[i]);
 		}
 		
 	}

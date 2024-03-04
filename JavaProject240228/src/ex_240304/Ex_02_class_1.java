@@ -41,10 +41,22 @@ public class Ex_02_class_1 {
 		ani4.soundMethod();
 
 		// 매개변수 3개인 생성자로 호출후, 동적으로 사용해보기.
-		Animal ani5 = new Animal("강아지", 10,"멍멍");
+		Animal ani5 = new Animal("강아지", 10, "멍멍");
 		ani5.introduceMethod();
 		ani5.soundMethod();
 
+		// 매개변수 3개인 생성자로 호출후, 동적으로 사용해보기.
+		// 
+		String [] likeFoodList = {"고기","사료"};
+		Animal ani6 = new Animal("똘똘이 강아지", 5, "똘똘이 멍멍", likeFoodList);
+		ani6.introduceMethod();
+		ani6.soundMethod();
+		// 메서드에 인자값을 구지 넣을 필요가 없다. 
+		// 왜? 해당 클래스의 멤버로, 좋아하는 음식 리스트를 받아서, 해당 속성에 저장해서,
+		// 그래서, 본인이 받아서 저장해 놓은걸 사용하면 됨. , this로 대체.
+//		ani6.likeFoodList(likeFoodList);
+		ani6.likeFoodList();
+		
 	}
 
 }
