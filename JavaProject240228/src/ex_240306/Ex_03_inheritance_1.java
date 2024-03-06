@@ -3,19 +3,40 @@ package ex_240306;
 // 부모 클래스 
 // 클래스 1) 정의.
 class A2 {
-	public A2() {
+	// 모든 클래스는 묵시적으로 Object 클래스를 상속 받고 있음.
+	public A2(int x) {
 		System.out.println("생성자 A2 입니다.");
+	}
+	// 디폴트 생성자를 컴파일러가 안만들어주니,
+	 // 우리가 수동으로 만들기. 
+	public A2() {
+		// TODO Auto-generated constructor stub
 	}
 }
 
 class B extends A2 {
-	public B() {
+	
+	public B(int x) {
+		// 첫번째 방법, 부모 클래스의 생성자에 타입 맞춤
+		// 표현, 깔맞춤. 
+//		super(x);
+//		x = 0;
+		super();
+		
+		
+		 // 생략이 되어 있고, 묵시적
 		System.out.println("생성자 B 입니다.");
+	}
+	
+	// 기본 생성자 없어서, 아래의 클래스에서 오류가 남. 만들기. 
+	public B() {
+		// TODO Auto-generated constructor stub
 	}
 }
 
 class C extends B {
 	public C() {
+		super(); // 생략이 되어 있고, 묵시적
 		System.out.println("생성자 C 입니다.");
 	}
 }
