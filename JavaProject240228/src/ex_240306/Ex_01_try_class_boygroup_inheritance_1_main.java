@@ -28,6 +28,9 @@ public class Ex_01_try_class_boygroup_inheritance_1_main {
 				Ex_01_try_class_boygroup_inheritance_1("연습생 보이그룹1", boyGroups,boyGroupsAlbum);
 		
 		boyGroup1.introduceMember();
+		// 기존에는 부모의 메서드를 사용했다면,
+		// 이제는 자식 클래스에서 재사용을 했기 때문에, 
+		// 타입이 부모 타입이건, 자식 타입이건, 재정의한 (오버라이딩한 메서드는) 항상 , 자식의 메서드가 우선임.
 		boyGroup1.introduceAlbum();
 		
 		// 부모클래스 명 참조형 변수 = new 자식 클래스명();

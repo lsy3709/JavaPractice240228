@@ -52,7 +52,7 @@ public class Idol {
 
 	public void introduceAlbum() {
 		for(String album : this.groupAlbums ) {
-			System.out.println("앨범으로  " + album + "있습니다.");
+			System.out.println("부모 메서드의 기능: 앨범으로  " + album + "있습니다.");
 		}
 	}
 
