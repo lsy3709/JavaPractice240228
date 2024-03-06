@@ -1,7 +1,7 @@
 package ex_240306;
 
 // 자식 클래스에서 구현한 경우.
-public class Ex_06_interface_subClass_2 implements test1{
+public class Ex_07_interface_subClass_3 implements test1{
 
 	@Override
 	public void showMenu() {
