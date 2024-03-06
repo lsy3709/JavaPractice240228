@@ -1,5 +1,7 @@
 package ex_240306;
 
+import ex_240304.Idol;
+
 public class Ex_01_try_class_boygroup_inheritance_1_main {
 
 	public static void main(String[] args) {
@@ -27,6 +29,11 @@ public class Ex_01_try_class_boygroup_inheritance_1_main {
 		
 		boyGroup1.introduceMember();
 		boyGroup1.introduceAlbum();
+		
+		// 부모클래스 명 참조형 변수 = new 자식 클래스명();
+		// 참조형 변수. 닷 연산자를 통해서, 접근이 가능한 메서드는? 1)부모꺼만 2)자식꺼만(도 포함)
+//		Idol test = new Ex_01_try_class_boygroup_inheritance_1();
+		// test., 정답) 1번 부모꺼만 보이네.
 		
 		// 접근 지정자 : 
 		// 1) public : 모든 곳에서 접근이 가능(다 보인다.)
