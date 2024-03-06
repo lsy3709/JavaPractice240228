@@ -2,6 +2,8 @@ package ex_240306;
 
 // 부모 클래스 
 // 클래스 1) 정의.
+
+// 클래스 구조 : C -> B -> A2
 class A2 {
 	// 모든 클래스는 묵시적으로 Object 클래스를 상속 받고 있음.
 	public A2(int x) {
@@ -18,7 +20,9 @@ class B extends A2 {
 	
 	public B(int x) {
 		// 첫번째 방법, 부모 클래스의 생성자에 타입 맞춤
-		// 표현, 깔맞춤. 
+		// 표현, 깔맞춤.
+//		int x2 = 0;
+		// super(); 약속이라서, 항상 자식의 생성자 호출전에 반드시 부모의 생성자가 호출되는 것. 
 //		super(x);
 //		x = 0;
 		super();
@@ -56,6 +60,25 @@ public class Ex_03_inheritance_1 {
 		// step over, 단순 넘기기(skip) f6
 		// 변수등을 넘어갈 때, 또는 메서드를 실행만
 		//하고 넘어갈 때. 
+		
+		//  instaceof 연산자 예제 
+		// 클래스 구조 : C -> B -> A2
+		// 큰집 = 작은집 , 다형성, 업캐스팅. 
+		// 문제점, test1, test2, test3 의 원래의 객체를 알기가 어렵다. 
+		A2 test1 = new A2();
+		A2 test2 = new B();
+		A2 test3 = new C();
+		
+		boolean result1 = (test2 instanceof B) ? true : false;
+		System.err.println("test2 instanceof B :  " + result1 );
+		
+		boolean result2 = (test2 instanceof A2) ? true : false;
+		System.err.println("test2 instanceof A2 :  " + result2 );
+		
+		boolean result3 = (test2 instanceof C) ? true : false;
+		System.err.println("test2 instanceof C :  " + result3 );
+		
+		
 
 	}
 
