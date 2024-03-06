@@ -1,5 +1,11 @@
-package ex_240304;
-//또 다른 예, Idol 클래스 를 만들고, 
+package ex_240306;
+// 추상 클래스로 변경하기. 
+// 추상 클래스가 뭐냐? 구성을 추상 메서드를 한개 이상 가지고 있으면, 추상클래스라한다. 
+// 추상적이다라고 하는 말은 , 약간 대략적인, 아웃라인, 개요. 
+// 반대가 되는 말이 구체적인 뉘앙스. 
+// 추상 메서드 뭐냐?  메서드 의 기본 구성 1) 선언부 2) 구현체(몸통) 으로 구성이되는데 여기서, 2번 빠진 메서드.
+// 즉 예 ) abstract 키워드 를 사용하고, 
+// abstract public void introduceAlbum ()
 
 // 해당 클래스 속성(변수)에는
 // 1) 그룹 명. 
@@ -11,9 +17,14 @@ package ex_240304;
 // 1) 소개하는 기능( 그룹이름으로)
 // 2) 그룹원의 이름을 소개하는 기능.
 // 3) 앨범 이름 소개하는 기능. 
+// 
+// 추상 메서드를 추가. 
+// 4) 활동하는 지역을 알려주는 기능. 
+
+// 기존 클래스 -> 추상 클래스로 변경함. 
 
 // 인스턴스, 예) BTS, 블랙핑크 
-public class Idol {
+abstract public class Idol_abstract {
 	public String groupName;
 //	public int groupNumber;
 	// 해당 멤버를 받는 배열의 크리고 대체.
@@ -30,7 +41,7 @@ public class Idol {
 	// 매개변수를 3개인 생성자를 만들면 됨.
 	// 디폴트 생성자를 어떻게 할까요? 안만들고, 바로 3개짜리 생성자만 이용하겠습니다.
 
-	public Idol(String groupName, String[] groupMembers, String[] groupAlbums) {
+	public Idol_abstract(String groupName, String[] groupMembers, String[] groupAlbums) {
 		// 생성자 호출시, 넘겨받은 매개변수들을 ,
 		// 원래의 인스턴스의 값으로 저장 했다. (표현),
 		this.groupName = groupName;
@@ -55,5 +66,7 @@ public class Idol {
 			System.out.println("부모 메서드의 기능: 앨범으로  " + album + "있습니다.");
 		}
 	}
+	
+	abstract public void introduceActivityArea() ;
 
 }
