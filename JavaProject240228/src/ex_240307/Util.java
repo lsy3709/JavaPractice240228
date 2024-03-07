@@ -4,6 +4,33 @@ import java.time.LocalDate;
 
 public class Util {
 	
+	// 확인용. SportsArray라는 배열에 담긴 인스턴스의 값 조회하는 메서드 
+	public static void sportsArrayShowInfo(Sports[] sportsArray) {
+		for(Sports sports :sportsArray) {
+			
+		}
+		
+	}
+	
+	
+	// 입력 숫자에 따른 계절 이름 출력하는 메서드 
+	public static String pickSeason(int number) {
+		if(number == 1) {
+			return "봄";
+		} else if (number == 2) {
+			return "여름";
+		} else if (number == 3) {
+			return "가을";
+		} else if (number == 4) {
+			return "겨울";
+		} else {
+			System.out.println("다시 입력 해주세요.");
+			return "사계절";
+		}
+		
+		
+	}
+	
 	//현재 날짜 등록 해주는 기능. 
 	public static void showDate() {
 		LocalDate currentDate = LocalDate.now();
