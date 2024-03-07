@@ -1,10 +1,10 @@
-package test0307.pse_0307;
+package Test0307.kbg_0307;
 
 public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("박성언");
+		System.out.println("김병건");
 	}
 
 }
