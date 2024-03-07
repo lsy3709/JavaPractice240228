@@ -11,6 +11,12 @@ public class Util {
 		System.out.println("등록 시간 : " + createTime);
 	}
 	
+	public static String showReturnDate() {
+		LocalDate currentDate = LocalDate.now();
+		String createTime = currentDate.toString();
+		return createTime;
+	}
+	
 	public static void showSeason(Sports sports, int season) {
 		switch (season) {
 		case 1: {
