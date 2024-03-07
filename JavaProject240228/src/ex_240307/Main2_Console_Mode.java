@@ -18,12 +18,16 @@ public class Main2_Console_Mode {
 			int checkNum = scanner.nextInt();
 			if (checkNum == 3) {
 				System.out.println("종료합니다.");
+				// 완전 종료시, 스캐너 인스턴스 메모리 반납하기.
+				scanner.close();
 				break;
 			} else if (checkNum == 1) {
 				// 스포츠 등록하는 메서드 
+				System.out.println("스포츠 등록하기.");
 				
 			} else if (checkNum == 2) {
 				// 스포츠 검색하는 메서드 
+				System.out.println("스포츠 검색하기.");
 				
 			} else {
 				System.out.println("==========1 ~ 3번 숫자를 입력해주세요.===========");
