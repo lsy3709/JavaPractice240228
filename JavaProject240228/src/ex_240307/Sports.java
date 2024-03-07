@@ -3,7 +3,8 @@ package ex_240307;
 public class Sports {
 	// 주제
 	// Sport : 부모
-	// 공통 멤버 변수 3개, 1) 이름 2) 인원수 3) 플레이 시간 4) 운동 장소
+	// 공통 멤버 변수 3개 -> 6개, 1) 이름 2) 인원수 3) 플레이 시간 4) 운동 장소
+	// 5) 시즌 6) 등록날짜 
 	 
 	private String sportsName;
 	private int sportsMemberCount;

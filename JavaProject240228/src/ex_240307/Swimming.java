@@ -23,6 +23,7 @@ public class Swimming extends Sports implements Interface1{
 		for(String item :items) {
 			System.out.print(item+", ");
 		}
+		System.out.println();
 		
 	}
 

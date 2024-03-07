@@ -48,6 +48,16 @@ public class Main {
 		Util.showDate();
 		Util.showSeason(baseball, 1);
 		
+		Baseball baseball2 = (Baseball)baseball;
+		// 다시, 메서드를 조회 해보면, 자식이 재정의한 메서드가 보임. 
+		baseball2.showInOutPlace(2);
+		// 야구 선수 소개 
+		String [] baseballMembers = {"상용","성언","상준","병건","관우","상현","동진","규원","성훈"};
+		baseball2.showTeamNameOrMember(baseballMembers);
+		// 야구 아이템 소개 
+		String [] baseballItem = {"뱃트","야구공","글러브","야구모자","유니폼","야구 신발"};
+		baseball2.showUseItems(baseballItem);
+		
 
 	}
 
