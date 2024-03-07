@@ -34,9 +34,10 @@ public class InputFuncs {
 		
 		System.out.println("개막 시즌 입력해주세요(봄:1,여름:2,가을:3,겨울:4)>>: ");
 		int sportsStartSeason = scanner.nextInt();
+		String sportsStartSeasonPick = Util.pickSeason(sportsStartSeason);
 		
-		System.out.println("실내:1, 실외:2 입력해주세요>> ");
-		int sportsInOrOut = scanner.nextInt();
+		System.out.println("실내 또는 실외 입력해주세요>> ");
+		String sportsInOrOut = scanner.next();
 		
 		System.out.println("대표 멤버 3명만 입력해주세요(공백을 기준으로 나란히 작성해주세요)>>: ");
 		String [] members = new String[3];
@@ -51,7 +52,13 @@ public class InputFuncs {
 		}
 		
 		// 콘솔에서 입력 받은 데이터를, 우리가 만든 클래스에 적용하기. 
-		
+		// 부모 타입 : Sports sports
+		// 자식 타입 : SubSports
+//		public SubSports(String sportsName, int sportsMemberCount, String sportsPlayTime, 
+//				String sportsPlace, String seasonInfo,String inOrOut , 
+//				String [] items, String [] members)
+		sports = new SubSports(sportsName, sportsMemberCount, sportsPlayTime,
+				sportsPlayPlace, sportsStartSeasonPick,sportsInOrOut,items,members);
 		
 		return sports;
 	}

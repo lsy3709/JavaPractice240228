@@ -3,6 +3,10 @@ package ex_240307;
 import java.util.Scanner;
 
 public class Main2_Console_Mode {
+	// 등록 받을 스포츠를 담을 배열을 만들기. 
+	// 단점, 크기가 고정이 되어서, 늘리거나, 줄일수 없어요. 
+	// 최초에 스포츠 등록 할 때, 갯수를 지정하기.
+	static Sports [] sportsArray;
 
 	public static void main(String[] args) {
 		// 1. 스포츠 등록하기. 메서드로 만들기.
@@ -24,6 +28,17 @@ public class Main2_Console_Mode {
 			} else if (checkNum == 1) {
 				// 스포츠 등록하는 메서드 
 				System.out.println("스포츠 등록하기.");
+				System.out.println("등록할 스포츠 갯수를 입력해주세요(1~5)>>");
+				int sportsNumber = scanner.nextInt();
+				sportsArray = new Sports[sportsNumber];
+				
+				InputFuncs inputSports = new InputFuncs();
+				SubSports sports = null;
+				Sports SubinputedSports = inputSports.enrollSports(sports);
+				for(int i = 0 ; i <sportsArray.length; i++) {
+					sportsArray[i] = SubinputedSports;
+				}
+				
 				
 			} else if (checkNum == 2) {
 				// 스포츠 검색하는 메서드 
