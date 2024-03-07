@@ -38,6 +38,8 @@ public class Main2_Console_Mode {
 				for(int i = 0 ; i <sportsArray.length; i++) {
 					sportsArray[i] = SubinputedSports;
 				}
+				// 등록 후, 저장되는 공간이 현재는 메모리이다 보니, 남지 않음. 
+				// 그래서, 바로 출력을 하기. 테스트용
 				SubSports subSports = (SubSports)SubinputedSports;
 				subSports.showAllInfo();
 				

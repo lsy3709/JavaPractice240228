@@ -19,6 +19,7 @@ public class SubSports extends Sports implements Interface1{
 	
 	// 한번에 모든 값 출력하는 메서드 만들기. 
 	public void showAllInfo() {
+		System.out.println("==============등록 후 확인용 출력입니다.====================");
 		System.out.println("종목 이름 : " + super.getSportsName() + ", 인원수 : " + super.getSportsMemberCount()
 		+", 경기시간: " + super.getSportsPlayTime() + ", 경기장소 : " + super.getSportsPlace()
 		+", 시즌정보 : " + this.seasonInfo + ", 실 내외 여부: " + this.inOrOut 
