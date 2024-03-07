@@ -38,6 +38,8 @@ public class Main2_Console_Mode {
 				for(int i = 0 ; i <sportsArray.length; i++) {
 					sportsArray[i] = SubinputedSports;
 				}
+				SubSports subSports = (SubSports)SubinputedSports;
+				subSports.showAllInfo();
 				
 				
 			} else if (checkNum == 2) {
