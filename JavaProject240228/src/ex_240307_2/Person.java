@@ -26,11 +26,24 @@ public class Person {
 	// 2번째, equals는 Object에도 있지만, 객체를 비교해서 많이 사용 안한다. 
 	// 그래서, 재정의를 하고, 우리는 이름이 같으면 같다고 가정하고 재정의한다. 
 	
-//	public boolean equals(Object obj) {
-//	Person p= (Person)obj;
-	// 문자열 비교하는 것 같이 설명하고 안내하기. 
-//	if(p.name equals(obj))
-//	}
+	public boolean equals(Object obj) {
+		// 담을 때, 모델 타입을 정해서 담아 놓으면, 
+		// 여러모로 작업 할 때 편하다. 지금처럼, 해당 형을 확인하고 
+		// 하는 작업 할 필요가 없다. 
+		// 근데 지금은 왜함? 공부용으로 함. ㅋㅋ
+		if(obj instanceof Person) {
+			Person p= (Person)obj;
+//			 문자열 비교하는 것 같이 설명하고 안내하기. 
+			if(p.name.equals(name)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		return false;
+	
+		
+	}
 	
 
 	public static void main(String[] args) {
@@ -38,10 +51,16 @@ public class Person {
 		Person person1 = new Person("이상용1",41);
 		Person person2 = new Person("이상용2",41);
 		
+		Person person3 = new Person("이상용",41);
+		Person person4 = new Person("이상용",41);
+		
 		System.out.println("person1 hashCode: "+ person1.hashCode());
 		System.out.println("person2 hashCode: "+ person2.hashCode());
 		System.out.println("person1 toString: "+ person1.toString());
 		System.out.println("person2 toString: "+ person2.toString());
+		System.out.println("=========================================");
+		System.out.println("person1.equals(person2) : "+ person1.equals(person2));
+		System.out.println("person3.equals(person4) : "+ person3.equals(person4));
 		// 실제 데이터를 이용해서 작업을함. 
 		// 비지니스 로직, 데이터가지고 작업을 하지. 
 		// 메모리 위치의 주솟값 같은지 여부가 그리크게 
