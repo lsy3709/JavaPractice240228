@@ -10,6 +10,31 @@ public class Sports {
 	private String sportsPlayTime;
 	private String sportsPlace;
 	
+	// 스포츠 개막 시즌
+	// getter/setter 이용
+	private Season season ;
+	
+	public Season getSeason() {
+		return season;
+	}
+
+	public void setSeason(Season season) {
+		this.season = season;
+	}
+
+	public String getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+	// 스포츠 등록시간 샘플
+	// getter/setter 이용
+	private String createTime;
+	
+	
+	
 	// 생성자를 안만들면, 매개변수 4개 짜리인 
 	public Sports(String sportsName, int sportsMemberCount, String sportsPlayTime, String sportsPlace) {
 		this.sportsName = sportsName;
@@ -44,14 +69,16 @@ public class Sports {
 	public void showInfo() {
 		System.out.print("스포츠 이름 : "+this.sportsName);
 		System.out.print(", 인원수 : "+this.sportsMemberCount);
-		System.out.print(", 플레이시간 : "+this.sportsPlayTime);
+		System.out.println(", 플레이시간 : "+this.sportsPlayTime);
 	}
 	public void showPlayPlace() {
-		System.out.println(" 운동 장소 : " + this.sportsPlace);
+		System.out.println("운동 장소 : " + this.sportsPlace);
 	}
 	// 1) 이름, 인원수, 플레이 시간을 알려주는 기능 
 	// 2) 운동 장소를 알려주는 기능
 	// Enum 로 문자열로 만들기, 상수처럼. 
+	
+	
 	// 3) 개막일 시즌별 (봄, 여름, 가을 , 겨울) 
 	
 	
