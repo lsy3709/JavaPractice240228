@@ -2,6 +2,22 @@ package ex_240308;
 
 import java.util.Vector;
 
+class Book {
+	private String name; 
+	private String author;
+	
+	public Book(String name, String author) {
+		this.name = name;
+		this.author = author;
+	
+	}
+	
+	public void showInfo() {
+		System.out.println("책 제목 : " + this.name + " ,저자 : " + this.author);
+		
+	}
+}
+
 public class Ex_06_Collection_Vector_1 {
 
 	public static void main(String[] args) {
@@ -19,7 +35,7 @@ public class Ex_06_Collection_Vector_1 {
 		// 주의사항, 기본형 안된다.
 		// Vector<타입> v1 = new Vector<타입>();
 		Vector<String> v1 = new Vector<String>();
-
+		System.out.println("v1 벡터의 담을수 있는 용량 크기 확인 최초 : " + v1.capacity());
 		// 추가, add 메서드 이용하면
 		// 순서가 있음. 중복 가능.
 		v1.add("사과");
@@ -97,6 +113,24 @@ public class Ex_06_Collection_Vector_1 {
 			String str = (String)obj;
 			System.out.println("v1Array 배열 출력: " + str);
 		}
+		
+		System.out.println("v1 벡터의 담을수 있는 용량 크기 확인 : " + v1.capacity());
+		
+		// 임의의 Book 클래스 인스턴스를 요소를 가지는 벡터 ,
+		// 추가
+		Vector<Book> v3 = new Vector<Book>();
+		v3.add(new Book("상용책1", "상용1"));
+		v3.add(new Book("상용책2", "상용2"));
+		v3.add(new Book("상용책3", "상용3"));
+		
+		// 출력. 
+		System.out.println("Book 요소의 내용 다 출력 :");
+		for (Book book : v3) {
+			book.showInfo();
+		}
+		
+		
+		
 
 	}
 
