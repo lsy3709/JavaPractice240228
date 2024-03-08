@@ -101,7 +101,30 @@ public class Ex_02_String_1 {
 		String [] resultArray2 = str12.split(",");
 		showArray(resultArray1);
 		showArray(resultArray2);
+		
+		//String subString(int beginIndex) : beginIndex부터 시작되는 문자열을 반환.
+		
+		//String subString(int beginIndex, int lastIndex)
+		// : beginIndex부터 lastIndex (미만)까지 문자열을 반환.
+		System.out.println("str10.substring(2) : " + str10.substring(2));
+		System.out.println("str10.substring(1,3) : " + str10.substring(1,3));
+		
+		// String trim() : 문자열 앞뒤의 공백을 제거함. 
+		String str13 = "   HELLO   ";
+		System.out.println("str13 : HELLO " + str13);
+		System.out.println("str13 :    HELLO    " + str13.trim());
+		System.out.println("str13.length() : " + str13.length());
+		System.out.println("str13.trim().length() : " + str13.trim().length());
 
+		// 응용 1) 검색시, 복붙을 하는데, 공백이 섞여 있음. 
+		// 대소문자 상관없이 등 검색할 때, 
+		// 입력된 문자열이, 
+		// 응용 2) 입력된 파일의 확장자를 기준으로, 이미지 파일의 종류를 분리
+		// abc.jpg, def.png, ghi.jpeg, abcd.MOV, efgh.mp4
+		// 예) 게시글 작성치 첨부 파일로, 사진도 업로드, 영상도 업로드 
+		// 내가 올린 게시글을 출력시, 이미지 로딩, 영상으로 로딩을 할지 분리. 
+		
+		
 
 	}
 	
