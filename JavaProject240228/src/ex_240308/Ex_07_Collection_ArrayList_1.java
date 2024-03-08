@@ -1,6 +1,7 @@
 package ex_240308;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Ex_07_Collection_ArrayList_1 {
 
@@ -33,6 +34,26 @@ public class Ex_07_Collection_ArrayList_1 {
 		
 		// 검색 기능 , 라면 검색 하기.
 		System.out.println("라면 검색 결과 : " + arrayList.contains("라면"));
+		
+		// 현재, ArrayList로 Iterator 인터페이스 타입으로 변환 뒤. 
+		// 모든 요소를 확인 후, 조회하는 간단한 기능 구현. 
+		// 문법: Iterator 인터페이스를 상속받은 컬렉션들은 , 해당 인스턴스에 기능으로 
+		// iterator() 메소드를 모두 가지고 있고, 이것을 호출 하면 됩니다.
+		// ArrayList에 있는 모든 요소를 it1 , 인스턴스에 다 들어가 있다.
+		// 비유 하자면, 특정의 테이블에 1번, 2번, 순서대로 기록이 되어 있다. 
+		// 우리는 순서대로 기록된 테이블 차례차례 순차 검색이 가능하다. 
+		// 조회도 해보자. 
+		
+		// 순서1, arrayList 인스턴스에 포함된 iterator() 호출.
+		Iterator<String> it1 = arrayList.iterator();
+		// hasNext(), 해당 테이블의 1번 라인부터해서 존재 유무 : true, false  리턴.
+		// 순서2, 존재 유무 확인. 
+		while(it1.hasNext()) {
+			// next();해당 값을 가지고 오는 역할.
+			// 순서3, 값을 가져오기. 
+			String string = it1.next();
+			System.out.println("iterator 를 이용한 출력 : " + string);
+		}
 		
 		
 
