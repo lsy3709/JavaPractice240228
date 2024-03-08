@@ -2,7 +2,7 @@ package ex_240308;
 
 import java.util.StringTokenizer;
 
-public class Ex_04_StringTokenizer_1 {
+public class Ex_05_StringTokenizer_1 {
 
 	public static void main(String[] args) {
 		// query 의 형식은 HTML 의 웹브라우저에서 get 방식으로 서버에 전달하면.
