@@ -7,33 +7,33 @@ import java.awt.event.MouseListener;
 import javax.swing.JButton;
 
 public class ch13_Buttons implements MouseListener {
-	String[] drawStrings = {"자유선","직선","사각형","원" };
-	String[] toolStrings = {"캔버스 추가","캔버스 삭제","클리어","색선택","이전","다음","글상자" };
-	JButton[] drawbuttons = new JButton[4];
+	String[] drawStrings = { "자유선", "직선", "사각형", "원", "지우개" };
+	String[] toolStrings = { "캔버스 추가", "캔버스 삭제", "클리어", "색선택", "이전", "다음", "글상자" };
+	JButton[] drawbuttons = new JButton[5];
 	JButton[] toolbuttons = new JButton[7];
-	static boolean[] draw = new boolean[4];
+	static boolean[] draw = new boolean[5];
 
 	// JTabbedPane 상속 받아서 탭 추가하기.
 	static ch13_CanvasGroup canvas = new ch13_CanvasGroup();
 	ch13_Stroke stroke = new ch13_Stroke();
-	
+
 	static boolean clear;
 	static boolean erase;
 	static boolean text;
-	
+
 	int canvasNum = 0;
 
 	ch13_Buttons() {
 
-		 //그리기 버튼 만들기
-		for(int i = 0; i < drawbuttons.length; i++) {
+		// 그리기 버튼 만들기
+		for (int i = 0; i < drawbuttons.length; i++) {
 			drawbuttons[i] = new JButton(drawStrings[i]);
 			drawbuttons[i].setBorderPainted(false);
 			drawbuttons[i].addMouseListener(this);
 		}
 
-		 //툴 버튼 만들기
-		for(int i = 0; i < toolbuttons.length; i++) {
+		// 툴 버튼 만들기
+		for (int i = 0; i < toolbuttons.length; i++) {
 			toolbuttons[i] = new JButton(toolStrings[i]);
 			toolbuttons[i].setBorderPainted(false);
 			toolbuttons[i].addMouseListener(this);
@@ -66,6 +66,11 @@ public class ch13_Buttons implements MouseListener {
 			setDraw(button);
 		}
 
+		// 사각지우개 추가
+		if (button == drawbuttons[4]) {
+			setDraw(button);
+		}
+
 		// 캔버스추가
 		if (button == toolbuttons[0]) {
 			setInit();
@@ -74,7 +79,7 @@ public class ch13_Buttons implements MouseListener {
 
 		// 캔버스 삭제
 		if (button == toolbuttons[1]) {
-			//setInit();
+			// setInit();
 			ch13_CheckFrame check = new ch13_CheckFrame();
 		}
 
@@ -154,7 +159,7 @@ public class ch13_Buttons implements MouseListener {
 	private void setInit() {
 		erase = false;
 		text = false;
-		
+
 		for (int i = 0; i < drawbuttons.length; i++) {
 			draw[i] = false;
 			drawbuttons[i].setBorderPainted(false);
@@ -223,8 +228,8 @@ public class ch13_Buttons implements MouseListener {
 			// peek() 해당 스택에 꼭대기(최근에 담은것) 없다면
 			//
 			if (ch13_Memory.memory.peek() == null) {
-				//Sketch 클래스에 Stack 클래스에 , 형 Object
-				// 시작점, 끝점을 pop() 꺼내기 
+				// Sketch 클래스에 Stack 클래스에 , 형 Object
+				// 시작점, 끝점을 pop() 꺼내기
 				ch13_Sketch.redoStart.push(ch13_Sketch.start.pop());
 				ch13_Sketch.redoEnd.push(ch13_Sketch.end.pop());
 			}

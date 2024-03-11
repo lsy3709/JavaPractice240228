@@ -14,7 +14,6 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
-
 public class ch13_Canvas extends JPanel {
 	ch13_Memory memory = new ch13_Memory();
 	ch13_Sketch sketch = new ch13_Sketch();
@@ -42,12 +41,12 @@ public class ch13_Canvas extends JPanel {
 	class MyMouseListener extends MouseAdapter {
 
 		public void mousePressed(MouseEvent e) {
-			
+
 			if (ch13_Buttons.erase == true || ch13_Buttons.draw[0] == true) {
 				ch13_ColorFrame.colorChange = false;
 				start = e.getPoint();
 				sketch.sketch.add(start);
-				sketch.next = sketch.sketch.size() - 1;
+				sketch.next = sketch.sketch.size();
 				sketch.start.add(sketch.sketch.size() - 1);
 			}
 
@@ -64,6 +63,15 @@ public class ch13_Canvas extends JPanel {
 			if (ch13_Buttons.draw[3] == true) {
 				ch13_ColorFrame.colorChange = false;
 				start = e.getPoint();
+			}
+
+			// 사각 지우개
+			if (ch13_Buttons.draw[4] == true) {
+				ch13_ColorFrame.colorChange = false;
+				start = e.getPoint();
+				sketch.sketch.add(start);
+				sketch.next = sketch.sketch.size();
+				sketch.start.add(sketch.sketch.size() - 1);
 			}
 
 		}
@@ -95,17 +103,23 @@ public class ch13_Canvas extends JPanel {
 				repaint();
 			}
 
+			if (ch13_Buttons.draw[4] == true) {
+				end = e.getPoint();
+				sketch.sketch.add(end);
+				repaint();
+			}
+
 		}
 
 		public void mouseReleased(MouseEvent e) {
-			
+
 			if (ch13_Buttons.erase == true) {
 				memory.memory.push(null);
 				memory.colorMemory.push(Color.white);
 				memory.thicknessMemory.push(ch13_Stroke.thick);
-				sketch.end.add(sketch.sketch.size()-1);
+				sketch.end.add(sketch.sketch.size() - 1);
 			}
-			
+
 			if (ch13_Buttons.draw[0] == true) {
 				memory.memory.push(null);
 				memory.colorMemory.push(ch13_ColorFrame.color);
@@ -130,6 +144,13 @@ public class ch13_Canvas extends JPanel {
 				memory.colorMemory.push(ch13_ColorFrame.color);
 				memory.thicknessMemory.push(ch13_Stroke.thick);
 			}
+
+			if (ch13_Buttons.draw[4] == true) {
+				memory.memory.push(null);
+				memory.colorMemory.push(Color.white);
+				memory.thicknessMemory.push(ch13_Stroke.thick);
+				sketch.end.add(sketch.sketch.size() - 1);
+			}
 		}
 
 	}
@@ -140,7 +161,7 @@ public class ch13_Canvas extends JPanel {
 		Graphics2D g2 = (Graphics2D) g;
 
 		if (ch13_Buttons.clear == true) {
-			
+
 			ch13_Clear clearShape = new ch13_Clear();
 
 			g2.setColor(Color.white);
@@ -186,12 +207,13 @@ public class ch13_Canvas extends JPanel {
 			else {
 
 				//
-				if(ch13_Buttons.erase == true) {
+				if (ch13_Buttons.erase == true) {
 					g2.setColor(Color.white);
-					for (int i = sketch.next; i < sketch.sketch.size() -1; i++)
-						g2.drawLine(sketch.sketch.get(i).x, sketch.sketch.get(i).y, sketch.sketch.get(i+1).x, sketch.sketch.get(i+1).y);
+					for (int i = sketch.next; i < sketch.sketch.size() - 1; i++)
+						g2.drawLine(sketch.sketch.get(i).x, sketch.sketch.get(i).y, sketch.sketch.get(i + 1).x,
+								sketch.sketch.get(i + 1).y);
 				}
-				
+
 				// 스케치
 				if (ch13_Buttons.draw[0] == true) {
 					for (int i = sketch.next; i < sketch.sketch.size() - 1; i++)
@@ -212,6 +234,14 @@ public class ch13_Canvas extends JPanel {
 				// 타원
 				if (ch13_Buttons.draw[3] == true) {
 					g2.draw(elipse);
+				}
+
+				// 사각지우개1
+				if (ch13_Buttons.draw[4] == true) {
+					g2.setColor(Color.white);
+					for (int i = sketch.next; i < sketch.sketch.size() - 1; i++)
+						g2.drawLine(sketch.sketch.get(i).x, sketch.sketch.get(i).y, sketch.sketch.get(i + 1).x,
+								sketch.sketch.get(i + 1).y);
 				}
 
 			}
