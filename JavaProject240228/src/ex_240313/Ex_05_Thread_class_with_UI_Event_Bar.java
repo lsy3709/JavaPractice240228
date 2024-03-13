@@ -29,25 +29,25 @@ class MyLabel extends JLabel {
 	// 간단히 한번 보기.
 	// paintComponent 메서드, 매개변수 : Graphics 타입의 레퍼런스 정의.
 	// 분홍색 바의 수치가 증가하면, 수치에 맞게끔 , 상태바가 증가하는 그림을 그려주는 역할.
-	public void paintComponent(Graphics g) {
+	
+	public void paintComponent(Graphics g) { 
 		// 그림을 그릴때, 부모의 기능을 재정의 해서 사용할 예정.
-		super.paintComponents(g);
+		  super.paintComponent(g); 
 		// 그릴려는 막대의 색깔 설정. : 분홍색.
-		g.setColor(Color.MAGENTA);
+		  g.setColor(Color.MAGENTA); 
 		// 막대의 전체 사이즈가 예 : 100, 1/100 의미, 1%씩 그리는 수치.
-		int width = (int) (((double) this.getWidth()) / maxBarSize * barSize);
-
+		  int width = (int)(((double)(this.getWidth())) 
+		    /maxBarSize*barSize); 
 		// 분홍색 막대 그래프가 없을 때,
-		if (width == 0)
-			return;
-		// 사각형을 그려주는 메서드 (색깔이 분홍색이 막대를 그려준다.채워준다.)
-		// 첫번째 매개변수 : x 위치
-		// 두번째 매개변수 : y 위치
-		// 세번째 매개변수 : 막대의 가로 길이
-		// 네번째 매개변수 : 막대의 세로 길이
-
-		g.fillRect(0, 0, width, this.getHeight());
-	}
+		  if(width==0) return;  
+			// 사각형을 그려주는 메서드 (색깔이 분홍색이 막대를 그려준다.채워준다.)
+			// 첫번째 매개변수 : x 위치
+			// 두번째 매개변수 : y 위치
+			// 세번째 매개변수 : 막대의 가로 길이
+			// 네번째 매개변수 : 막대의 세로 길이
+		  g.fillRect(0, 0, width, this.getHeight()); 
+		 }
+	
 	
 	//동기화, 
 	// 1단계 : 키 입력 받으면 분홍색 막대 증가 기능.
@@ -74,7 +74,7 @@ class MyLabel extends JLabel {
 	}
 	
 	// 2단계 : 키 입력 없다면, 분홍색 막대 감소 기능. 
-	public void consume() {
+	synchronized void consume() {
 		if(barSize == 0) {
 			try {
 				// 키 입력 없으면, 호출. 
@@ -106,7 +106,7 @@ class ConsumerThread extends Thread {
 	
 	@Override
 	public void run() {
-		super.run();
+//		super.run();
 		while(true) {
 			try {
 				// 0.2 초씩 대기하기
@@ -138,9 +138,10 @@ public class Ex_05_Thread_class_with_UI_Event_Bar extends JFrame {
 	Ex_05_Thread_class_with_UI_Event_Bar(){
 		setTitle("분홍색 막대 바 채우기 스레드 동기화 이용, wait, notify 사용하기. ");
 		// 창 닫기 기능. 
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// 패널 요소를 배치(정렬방법)
-		Container container = new Container();
+		// 틀린요소1
+		Container container = getContentPane();
 		// 요소의 정렬 기능이 없다.
 		// 여기서는 단순히, 막대바 하나로 확인중이라서, 
 		container.setLayout(null);
@@ -163,7 +164,7 @@ public class Ex_05_Thread_class_with_UI_Event_Bar extends JFrame {
 		container.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				super.keyPressed(e);
+//				super.keyPressed(e);
 				// 기본 배경인 오렌지색 막대에, 키 입력으로 , 분홍색 막대를 1씩 채우는 역할. 
 				bar.fill();
 			}
