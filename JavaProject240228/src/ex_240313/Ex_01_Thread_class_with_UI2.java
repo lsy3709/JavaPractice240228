@@ -93,12 +93,18 @@ public class Ex_01_Thread_class_with_UI2 extends JFrame {
 		// 변수에 담아서 재사용하지 않고, 바로 할당했음. 1회용처럼.
 		timerLabel.setFont(new Font("Gothic", Font.ITALIC, 100));
 		timerLabel.setBackground(Color.BLUE);
+		// JLabel 배경색 기본 투명인데, 해당 함수 이용해서, 배경색 지정.하기. 
+		timerLabel.setOpaque(true);
 		JLabel testLabel = new JLabel("test");
+
 		testLabel.setBackground(Color.CYAN);
+		testLabel.setOpaque(true);
 		
 		// 2번째 숫자 카운팅 화면 패널 
 		JLabel timerLabel2 = new JLabel();
 		timerLabel2.setFont(new Font("Gothic", Font.ITALIC, 100));
+		timerLabel2.setBackground(Color.CYAN);
+		timerLabel2.setOpaque(true);
 
 		// 해당 라벨을 -> 부모의 캔버스 에 붙이는 작업.
 		container.add(timerLabel);
