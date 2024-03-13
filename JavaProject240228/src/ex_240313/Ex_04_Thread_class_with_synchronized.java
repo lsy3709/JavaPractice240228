@@ -4,7 +4,11 @@ import java.util.Iterator;
 
 // 공유 프린터 역할하는 클래스 
 class SharedPrinter {
-	public void print(String text) {
+	// 문제점은, 공유 프린터에 순서가 없이 각 스레드가 이용해서 발생했다면. 
+	// 순서를 지키기위해서, synchronized 이용하기. 
+	// 결론, 각 스레드가 순서를 지켜서 실행이 됩니다. 
+	// 화면상에는 영어가 다나오고, 한글이 다 출력이됨. 
+	 synchronized public void print(String text) {
 		for (int i = 0; i < text.length(); i++) {
 			System.out.print(text.charAt(i));
 			System.out.println();
