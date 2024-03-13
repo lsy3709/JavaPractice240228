@@ -1,9 +1,11 @@
 package ex_240313;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Font;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -58,9 +60,15 @@ public class Ex_01_Thread_class_with_UI2 extends JFrame {
 		// setFont (font)
 		// 변수에 담아서 재사용하지 않고, 바로 할당했음. 1회용처럼. 
 		timerLabel.setFont(new Font("Gothic",Font.ITALIC, 100));
+		timerLabel.setBackground(Color.BLUE);
+		JLabel testLabel = new JLabel("test");
+		testLabel.setBackground(Color.CYAN);
+		
 		
 		// 해당 라벨을 -> 부모의 캔버스 에 붙이는 작업. 
 		container.add(timerLabel);
+		container.add(testLabel);
+		container.add(new JButton("test2"));
 		
 		
 		// 스레드 작업. 
@@ -70,6 +78,7 @@ public class Ex_01_Thread_class_with_UI2 extends JFrame {
 		setSize(300,200);
 		// 부모 창을 보여 줄지 여부 지정. 
 		setVisible(true);
+		container.setBackground(Color.ORANGE);
 		tt2.start();
 		
 	}
