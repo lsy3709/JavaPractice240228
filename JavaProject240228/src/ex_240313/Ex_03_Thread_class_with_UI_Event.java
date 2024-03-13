@@ -81,6 +81,7 @@ public class Ex_03_Thread_class_with_UI_Event extends JFrame implements Runnable
 				// 해당 스레드가 0.03초 마다 실행되기
 				Thread.sleep(30);
 			} catch (Exception e) {
+				System.out.println("인터럽트 호출을 당해서 종료");
 				return;
 				// TODO: handle exception
 			}
