@@ -1,36 +1,56 @@
 package ex_240313;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 // 화면 UI 담당 클래스
+
 // 막대만 그리는 클래스.
 // 실제 전체 창 등은, 메인에서 그리기. 
 class MyLabel extends JLabel {
 	// JFrame : 자바 버전의 화면 그리는 도구 모음집.
 	// 막대 바의 수치를 담을 변수, 전체를 100
 	// 해당 막다의 수치가 커질수록, 분홍색(마젠타색)으로 채울 예정.
-	private int barSize = 0;
+	static int barSize = 0;
 	// 최대 막대의 크기 : 100으로 할 예정.
 	private int maxBarSize;
+	
+	// 넘겨 받는 인스턴스 , 수치 라벨
+	JLabel sizeBarLabel;
+	
+	
+	
+	// getter 만들어서, private 로 되어 있는 멤버에 접근하기. 
+	
 
 	// 생성자
-	MyLabel(int maxBarSize) {
+	MyLabel(int maxBarSize, JLabel sizeBarLabel ) {
 		this.maxBarSize = maxBarSize;
+		this.sizeBarLabel = sizeBarLabel;
+	}
+
+	// 막대바 사이즈 크기 가져오기
+	public int getBarSize() {
+		return barSize;
 	}
 
 	// 그림을 그려주는 기능 부분, 조금 어렵습니다.
 	// 간단히 한번 보기.
 	// paintComponent 메서드, 매개변수 : Graphics 타입의 레퍼런스 정의.
 	// 분홍색 바의 수치가 증가하면, 수치에 맞게끔 , 상태바가 증가하는 그림을 그려주는 역할.
-	
-	public void paintComponent(Graphics g) { 
+	// 틀린요소2
+	// repaint()  메서드를 호출하면, 여기 부분이 호출이 되어서, 
+	// 다시 그려주는 역할을 하는 부분 여기임. 
+	public void paintComponent(Graphics g) {
 		// 그림을 그릴때, 부모의 기능을 재정의 해서 사용할 예정.
 		  super.paintComponent(g); 
 		// 그릴려는 막대의 색깔 설정. : 분홍색.
@@ -45,6 +65,7 @@ class MyLabel extends JLabel {
 			// 두번째 매개변수 : y 위치
 			// 세번째 매개변수 : 막대의 가로 길이
 			// 네번째 매개변수 : 막대의 세로 길이
+		  sizeBarLabel.setText("바 크기 : " + barSize);
 		  g.fillRect(0, 0, width, this.getHeight()); 
 		 }
 	
@@ -71,6 +92,9 @@ class MyLabel extends JLabel {
 		barSize++;
 		repaint();// 분홍색 막대를 다시 그리기. 
 		notify(); // wait로 대기중인 스레드를 깨워서 동작 시키기. 
+		System.out.println("바크기 : " + barSize);	
+		// 여기서, 수치를 나타내는 라벨에 다시 그려주기로 하고, 
+		
 	}
 	
 	// 2단계 : 키 입력 없다면, 분홍색 막대 감소 기능. 
@@ -87,7 +111,10 @@ class MyLabel extends JLabel {
 		barSize--;
 		repaint(); // 분홍색 막대를 1만큼씩 감소
 		notify(); // wait로 대기중인 스레드를 깨우기,-> 계속 그림을 그린다. 
+		System.out.println("바크기 : " + barSize);	
 		// 분홍색으로 1씩 그리거나, 1씩 감소해서 그리거나, 
+		
+		// 여기서, 수치를 나타내는 라벨에 다시 그려주기로 하고, 
 		
 	}
 	
@@ -131,8 +158,12 @@ class ConsumerThread extends Thread {
 // MyLabel -> 막대 그림만 의미. 
 // 결론, MyLabel을 윈도우 창에 붙이기 예정. 
 public class Ex_05_Thread_class_with_UI_Event_Bar extends JFrame {
+//	SizeBarLabel sizeBarLabel = new SizeBarLabel();
+	JLabel sizeBarLabel = new JLabel();
+	
+	
 	// 사용할 막대 인스턴스를 생성. 최대 크기는 임의로 100으로 잡기. 
-	private MyLabel bar = new MyLabel(100);
+	private MyLabel bar = new MyLabel(100, sizeBarLabel);
 	
 	// 실행할 클래스에서 생성자 호출. 
 	Ex_05_Thread_class_with_UI_Event_Bar(){
@@ -144,18 +175,37 @@ public class Ex_05_Thread_class_with_UI_Event_Bar extends JFrame {
 		Container container = getContentPane();
 		// 요소의 정렬 기능이 없다.
 		// 여기서는 단순히, 막대바 하나로 확인중이라서, 
-		container.setLayout(null);
+		container.setLayout(new BorderLayout() );
 		// 기본 막대의 배경색 : 오렌지 색.
 		bar.setBackground(Color.ORANGE);
 		// JLabel 의 기본이 투명도가 있어서, 추가로 메서드 호출을해서 지정.
 		// 배경색 적용. 
 		bar.setOpaque(true);
 		// 창으로 부터, 가로 20만큼 떨어지고, 50 만큼 아래로 떨어지기
-		bar.setLocation(20,50);
+//		bar.setLocation(20,50);
 		bar.setSize(300,20);
 		
 		//창에 막대 붙이기 작업. 
+		container.add(bar, BorderLayout.EAST);
+		
+		
+		//추가 작업해보기. barSize의 수치를 표현하는 패널 붙이기작업.
+		JLabel barSizeLabel = new JLabel("바크기 : " + bar.getBarSize());
+		
+		// test 콘솔에 출력해보기.
+		// 1회성으로 호출만 되어서, 0만 출력이 되었음.
+//		System.out.println("바크기 : " + bar.getBarSize());
+		// 그래서, 스레드 MyLabel 클래스 안에, fill, consume 메서드 안에서 , 각각 바 크기를 출력을 했음. 
+		// 현재, 막대의 라벨은 크기 1, -1씩 증가 또는 감소를 할 때 마다 새롭게 그려지고 있음. 
+		
+		// 수치를 나타 내는 라벨또한, 매번 새롭게 그려주기. 하면 어떨까?
+		
+		
+		//창에 수치 막대 붙이기 작업.
 		container.add(bar);
+		container.add(sizeBarLabel);
+		
+		
 		
 		// 이벤트 핸들러 추가하기. 
 		// 키 입력시, 채우는 기능 넣기.
