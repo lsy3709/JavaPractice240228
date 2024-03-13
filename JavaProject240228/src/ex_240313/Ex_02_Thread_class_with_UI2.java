@@ -32,7 +32,11 @@ class TimerThread2 extends Thread {
 				sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
+				System.out.println("외부에서, 해당 스레드를 인터럽트 시켜서 예외 발생시키고 종료");
+				// 왜 오류가 났는지를 빨간쌕 글씨로 보여주기
 				e.printStackTrace();
+				// 예외처리 후, run 메서드 빠져나가기, 스레드도 같이 종료, 
+				return;
 			}
 		}
 	}
@@ -68,9 +72,9 @@ class TimerThread3 implements Runnable {
 
 }
 
-public class Ex_01_Thread_class_with_UI2 extends JFrame {
+public class Ex_02_Thread_class_with_UI2 extends JFrame {
 	// 화면을 그리기 위해서, 기본생성자에서, 화면을 그리기 위한 준비단계
-	Ex_01_Thread_class_with_UI2() {
+	Ex_02_Thread_class_with_UI2() {
 		// 윈도우 부모 창에 제목
 		setTitle("상속 받은 스레드 클래스 테스트 ");
 		// 창에 엑스 표시 누르면, 창을 종료함.
@@ -123,12 +127,17 @@ public class Ex_01_Thread_class_with_UI2 extends JFrame {
 		// 스레드 작업.
 		TimerThread2 tt2 = new TimerThread2(timerLabel);
 		tt2.start();
+		
 		// 방법2의 스레드 호출하기. 
 		TimerThread3 tt3 = new TimerThread3(timerLabel2);
 		// 순서3 추가 부분. Thread 생성자에 입력하기. 
 		Thread th3 = new Thread(tt3);
 		// 시작. 
 		th3.start();
+		
+		System.out.println("tt2.interrupt() 호출 ");
+		
+		tt2.interrupt();
 		
 
 	}
@@ -139,7 +148,7 @@ public class Ex_01_Thread_class_with_UI2 extends JFrame {
 		// JLabel 를 패널이라고하고, 패널을 붙이는 창이 필요함. 프레임(window 창같음)
 		// UI 기능을 많이 가지고 있는 클래스 하나를 상속을 받고.
 		// JFrame 클래스 상속받기.
-		Ex_01_Thread_class_with_UI2 test = new Ex_01_Thread_class_with_UI2();
+		Ex_02_Thread_class_with_UI2 test = new Ex_02_Thread_class_with_UI2();
 
 	}
 
