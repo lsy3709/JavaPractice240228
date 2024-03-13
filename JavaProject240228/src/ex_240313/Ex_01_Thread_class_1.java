@@ -69,6 +69,11 @@ public class Ex_01_Thread_class_1 {
 		TimerThread tt = new TimerThread();
 		// 순서2, 스레드를 상속받은 클래스의 인스턴스에서, start 메서드 호출 함. 
 		tt.start();
+		System.out.println("tt.getId() : " + tt.getId());
+		System.out.println("tt.getName() : " + tt.getName());
+		System.out.println("tt.getPriority() : " + tt.getPriority());
+		System.out.println("tt.getState() : " + tt.getState());
+		System.out.println("tt.currentThread().getName() : " + tt.currentThread().getName());
 		// run 메서드가 동작을 하게 됨. 
 		
 		// 두번째 스레드 동작하기. 
