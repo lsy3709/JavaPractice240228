@@ -92,9 +92,13 @@ public class Ex_02_jdbc_test_2_dao {
 			// 순서2
 			con = DriverManager.getConnection(URL, USER_ID, USER_PW);
 			// 순서3 , insert 이부분 조금 다름. -> 수정 할 예정.
-			String query = "SELECT id,pwd,name FROM test_java";
-			// 순서4
+			String query = "INSERT INTO TEST_JAVA (ID, PWD, NAME)" + "VALUES(?,?,?)";
+			// 순서4, INSERT 시 동적인 데이터를 추가하는 세터 함수가 필요함. 
 			pstmt = con.prepareStatement(query);
+			// VALUES(?,?,?), 첫번째 물음표를 1번으로 가리키고, 매개변수로 넘겨받은 데이터를 전달함.
+			pstmt.setString(1, id);
+			pstmt.setString(2, pwd);
+			pstmt.setString(3, name);
 			// 순서5
 			int resultNum = pstmt.executeUpdate();
 			System.out.println("레코드가 " + resultNum + "개 저장되었습니다.");
