@@ -15,6 +15,15 @@ public class Ex_01_jdbc_test_1 {
 		// 6) 3번째 탭 라이브러리즈에서, 2번째 classpath에 -> add jar 선택 하고
 		// 7) 해당 자바 프로젝트 -> 패키지-> ojdbc8_g.jar 선택하기. 
 		
+		//준비물 샘플 디비 
+//		CREATE TABLE TEST_JAVA(
+//			    id varchar2(20) NOT NULL, --아이디 // 없는게 정상, primary key  에 포함. 
+//			    pwd varchar2(30) NOT NULL, --비밀번호
+//			    name varchar2(30) NOT NULL, -- 이름
+//			    CONSTRAINT pk_member_java PRIMARY KEY(id)  -- 기본키 지정
+//			);
+//			select * from TEST_JAVA;
+		
 
 	}
 
