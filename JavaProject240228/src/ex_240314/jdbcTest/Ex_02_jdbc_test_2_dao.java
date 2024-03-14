@@ -7,10 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Ex_02_jdbc_test_2_dao {
-	
-	// DAO 패턴(Data Access Object) : DB에 접근해서 사용할 기능들의 모음집. 
-	// select, insert, update , delete 기능을 하나의 클래스에 모아두기. 
-	
+
+	// DAO 패턴(Data Access Object) : DB에 접근해서 사용할 기능들의 모음집.
+	// select, insert, update , delete 기능을 하나의 클래스에 모아두기.
+
 	// JDBC 연결을 위한 인스턴스 준비
 	// 드라이버, 유저명, 패스워드
 	// 반복이 되는 설정 코드, 그래서, 처음만 한번 타이핑 연습하고,나중에 복붙하기.
@@ -84,7 +84,7 @@ public class Ex_02_jdbc_test_2_dao {
 	}
 
 	// insert 하는 기능, 매개변수 ( id, pwd, name ) 받아서 전달할 예정.
-	public static void insert(String id, String pwd, String name) throws SQLException  {
+	public static void insert(String id, String pwd, String name) throws SQLException {
 		// 순서1 ~ 순서7 반복.
 		// 순서1
 		try {
@@ -93,7 +93,7 @@ public class Ex_02_jdbc_test_2_dao {
 			con = DriverManager.getConnection(URL, USER_ID, USER_PW);
 			// 순서3 , insert 이부분 조금 다름. -> 수정 할 예정.
 			String query = "INSERT INTO TEST_JAVA (ID, PWD, NAME)" + "VALUES(?,?,?)";
-			// 순서4, INSERT 시 동적인 데이터를 추가하는 세터 함수가 필요함. 
+			// 순서4, INSERT 시 동적인 데이터를 추가하는 세터 함수가 필요함.
 			pstmt = con.prepareStatement(query);
 			// VALUES(?,?,?), 첫번째 물음표를 1번으로 가리키고, 매개변수로 넘겨받은 데이터를 전달함.
 			pstmt.setString(1, id);
@@ -116,6 +116,38 @@ public class Ex_02_jdbc_test_2_dao {
 	}
 
 	// delete 하는 기능, 해당 id를 받아서 삭제할 예정.
+	// 삭제할 id(Primary Key ) 사용중, not null, unique
+	//
+	private static void delete(String id) throws SQLException {
+		// 순서1 ~ 순서7 반복.
+		// 순서1
+		try {
+			Class.forName(DRIVER);
+			// 순서2
+			con = DriverManager.getConnection(URL, USER_ID, USER_PW);
+			
+			// 순서3 , delete 부분으로 수정하기
+			String query = "DELETE FROM TEST_JAVA WHERE ID = ?";
+			// 순서4, INSERT 시 동적인 데이터를 추가하는 세터 함수가 필요함.
+			pstmt = con.prepareStatement(query);
+			// VALUES(?,?,?), 첫번째 물음표를 1번으로 가리키고, 매개변수로 넘겨받은 데이터를 전달함.
+			pstmt.setString(1, id);
+			
+			// 순서5
+			int resultNum = pstmt.executeUpdate();
+			System.out.println("레코드가 " + resultNum + "개 삭제되었습니다.");
+
+			// 순서6, select 할 때 사용.
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			// 순서7, 자원반납, 사용의 역순 ,
+			// 사용순서 1) con 2) pstmt 3) rs
+			rs.close();
+			pstmt.close();
+			con.close();
+		}
+	}
 
 	// update 는 id 제외하고, pwd , name 만 변경하기.
 
