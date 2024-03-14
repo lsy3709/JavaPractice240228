@@ -7,6 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Ex_02_jdbc_test_2_dao {
+	
+	// DAO 패턴(Data Access Object) : DB에 접근해서 사용할 기능들의 모음집. 
+	// select, insert, update , delete 기능을 하나의 클래스에 모아두기. 
+	
 	// JDBC 연결을 위한 인스턴스 준비
 	// 드라이버, 유저명, 패스워드
 	// 반복이 되는 설정 코드, 그래서, 처음만 한번 타이핑 연습하고,나중에 복붙하기.
