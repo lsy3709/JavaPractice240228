@@ -118,21 +118,21 @@ public class Ex_02_jdbc_test_2_dao {
 	// delete 하는 기능, 해당 id를 받아서 삭제할 예정.
 	// 삭제할 id(Primary Key ) 사용중, not null, unique
 	//
-	private static void delete(String id) throws SQLException {
+	public static void delete(String id) throws SQLException {
 		// 순서1 ~ 순서7 반복.
 		// 순서1
 		try {
 			Class.forName(DRIVER);
 			// 순서2
 			con = DriverManager.getConnection(URL, USER_ID, USER_PW);
-			
+
 			// 순서3 , delete 부분으로 수정하기
 			String query = "DELETE FROM TEST_JAVA WHERE ID = ?";
 			// 순서4, INSERT 시 동적인 데이터를 추가하는 세터 함수가 필요함.
 			pstmt = con.prepareStatement(query);
 			// VALUES(?,?,?), 첫번째 물음표를 1번으로 가리키고, 매개변수로 넘겨받은 데이터를 전달함.
 			pstmt.setString(1, id);
-			
+
 			// 순서5
 			int resultNum = pstmt.executeUpdate();
 			System.out.println("레코드가 " + resultNum + "개 삭제되었습니다.");
@@ -150,5 +150,36 @@ public class Ex_02_jdbc_test_2_dao {
 	}
 
 	// update 는 id 제외하고, pwd , name 만 변경하기.
+	public static void update(String pwd, String name) throws SQLException {
+		// 순서1 ~ 순서7 반복.
+		// 순서1
+		try {
+			Class.forName(DRIVER);
+			// 순서2
+			con = DriverManager.getConnection(URL, USER_ID, USER_PW);
+
+			// 순서3 , delete 부분으로 수정하기
+			String query = "UPDATE TEST_JAVA SET PWD=?, NAME=?";
+			// 순서4, INSERT 시 동적인 데이터를 추가하는 세터 함수가 필요함.
+			pstmt = con.prepareStatement(query);
+			// VALUES(?,?,?), 첫번째 물음표를 1번으로 가리키고, 매개변수로 넘겨받은 데이터를 전달함.
+			pstmt.setString(1, pwd);
+			pstmt.setString(1, name);
+
+			// 순서5
+			int resultNum = pstmt.executeUpdate();
+			System.out.println("레코드가 " + resultNum + "개 수정되었습니다.");
+
+			// 순서6, select 할 때 사용.
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			// 순서7, 자원반납, 사용의 역순 ,
+			// 사용순서 1) con 2) pstmt 3) rs
+			rs.close();
+			pstmt.close();
+			con.close();
+		}
+	}
 
 }
