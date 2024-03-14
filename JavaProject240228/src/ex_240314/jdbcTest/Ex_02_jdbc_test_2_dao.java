@@ -150,7 +150,8 @@ public class Ex_02_jdbc_test_2_dao {
 	}
 
 	// update 는 id 제외하고, pwd , name 만 변경하기.
-	public static void update(String pwd, String name) throws SQLException {
+	// 변경할 아이디를 선택해야함. 그래서, 해당 아이디 조건도 필요함. 
+	public static void update(String id, String pwd, String name) throws SQLException {
 		// 순서1 ~ 순서7 반복.
 		// 순서1
 		try {
@@ -159,12 +160,13 @@ public class Ex_02_jdbc_test_2_dao {
 			con = DriverManager.getConnection(URL, USER_ID, USER_PW);
 
 			// 순서3 , delete 부분으로 수정하기
-			String query = "UPDATE TEST_JAVA SET PWD=?, NAME=?";
+			String query = "UPDATE TEST_JAVA SET PWD=?, NAME=? WHERE ID = ?";
 			// 순서4, INSERT 시 동적인 데이터를 추가하는 세터 함수가 필요함.
 			pstmt = con.prepareStatement(query);
 			// VALUES(?,?,?), 첫번째 물음표를 1번으로 가리키고, 매개변수로 넘겨받은 데이터를 전달함.
 			pstmt.setString(1, pwd);
-			pstmt.setString(1, name);
+			pstmt.setString(2, name);
+			pstmt.setString(3, id);
 
 			// 순서5
 			int resultNum = pstmt.executeUpdate();
