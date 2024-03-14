@@ -17,7 +17,7 @@ public class Ex_02_jdbc_test_2_dao {
 	private final static String URL = "jdbc:oracle:thin:@localhost:1521:XE";
 	private final static String USER_ID = "system";
 	private final static String USER_PW = "oracle";
-	
+
 	static // 연결하기위한 인스턴스 , 고정
 	Connection con = null;
 	// 쿼리를 전달 하기 위한 인스턴스 , 고정
@@ -80,23 +80,31 @@ public class Ex_02_jdbc_test_2_dao {
 	}
 
 	// insert 하는 기능, 매개변수 ( id, pwd, name ) 받아서 전달할 예정.
-	public static void insert(String id, String pwd, String name) throws ClassNotFoundException, SQLException {
+	public static void insert(String id, String pwd, String name) throws SQLException  {
 		// 순서1 ~ 순서7 반복.
 		// 순서1
-		Class.forName(DRIVER);
-		// 순서2
-		con = DriverManager.getConnection(URL, USER_ID, USER_PW);
-		// 순서3 , insert 이부분 조금 다름. -> 수정 할 예정. 
-		String query = "SELECT id,pwd,name FROM test_java";
-		// 순서4 
-		pstmt = con.prepareStatement(query);
-		// 순서5 
-		int resultNum = pstmt.executeUpdate();
-		System.out.println("레코드가 " + resultNum + "개 저장되었습니다.");
-		
-		// 순서6, select 할 때 사용. 
-		// 순서7, 자원반납. 
-		
+		try {
+			Class.forName(DRIVER);
+			// 순서2
+			con = DriverManager.getConnection(URL, USER_ID, USER_PW);
+			// 순서3 , insert 이부분 조금 다름. -> 수정 할 예정.
+			String query = "SELECT id,pwd,name FROM test_java";
+			// 순서4
+			pstmt = con.prepareStatement(query);
+			// 순서5
+			int resultNum = pstmt.executeUpdate();
+			System.out.println("레코드가 " + resultNum + "개 저장되었습니다.");
+
+			// 순서6, select 할 때 사용.
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			// 순서7, 자원반납, 사용의 역순 ,
+			// 사용순서 1) con 2) pstmt 3) rs
+			rs.close();
+			pstmt.close();
+			con.close();
+		}
 	}
 
 	// delete 하는 기능, 해당 id를 받아서 삭제할 예정.
