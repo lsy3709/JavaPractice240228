@@ -10,6 +10,11 @@ public class Ex_05_FileIO_File_method {
 	// 이제는 File 클래스에 경로를 담아서 매개변수에 정의.
 	// 그러면, 궁금한 폴더 경로의 File 인스턴스만 전달하면, 해당 File 인스턴스로 
 	// 정보등을 조회가 가능하다. 
+	
+	// 활용은 예) 프로필 이미지등 , 처리할 때, File 클래스 이용해서, 해당 폴더 및 파일등을 임시로 생성등활용.
+	// 현재, 개발 연습중이니, 로컬(윈도우즈경로) -> 리눅스 경로에서도 동일하게 적용하면됨. 
+	
+	
 	public static void listDirectory(File dir) {
 		System.out.println("입력된 dir 의 정보 조회 메서드===============");
 		System.out.println("File dir의 인스턴스의 기능중에서 getPath() : " + dir.getParent());
