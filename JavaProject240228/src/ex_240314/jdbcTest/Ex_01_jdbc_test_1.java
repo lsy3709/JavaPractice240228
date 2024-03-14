@@ -16,6 +16,7 @@ public class Ex_01_jdbc_test_1 {
 		// 7) 해당 자바 프로젝트 -> 패키지-> ojdbc8_g.jar 선택하기. 
 		
 		//준비물 샘플 디비 
+		// sql developer 에서 진행하기. 
 //		CREATE TABLE TEST_JAVA(
 //			    id varchar2(20) NOT NULL, --아이디 // 없는게 정상, primary key  에 포함. 
 //			    pwd varchar2(30) NOT NULL, --비밀번호
@@ -24,6 +25,11 @@ public class Ex_01_jdbc_test_1 {
 //			);
 //			select * from TEST_JAVA;
 		
+		//더미 디비 
+//		insert into TEST_JAVA values ('lsy','1234','이상용');
+//		insert into TEST_JAVA values ('lsy2','1234','이상용2');
+//		insert into TEST_JAVA values ('lsy3','1234','이상용3');
+		// commit 해주기.
 
 	}
 
