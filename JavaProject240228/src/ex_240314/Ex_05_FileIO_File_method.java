@@ -36,8 +36,15 @@ public class Ex_05_FileIO_File_method {
 		// 직접적인 입출력 불가. 
 		
 		File f1 = new File("c:\\windows\\system.in");
+		File f2 = new File("c:\\temp_240314");
 		// 출력 테스트 
-		listDirectory(f1);
+		listDirectory(f2);
+		// 오류가 났음. 
+		// 오류가 코드 읽는 요령
+		// 현재 , 자바라서 파일이 몇개 없지만, 
+		// 나중에, 프레임워크에서, 서버단에서 오류가 발생을하면, 
+		// 내가 사용한 파일외에, 시스템에 제공하는 기본 파일등이 있음. 
+		// 그래서, 결론, 오류코드가 보이면, 먼저) 내가 작업한 파일이 있는지 여부를 확인. 
 		
 		
 
