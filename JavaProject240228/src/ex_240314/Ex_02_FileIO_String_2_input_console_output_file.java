@@ -3,7 +3,7 @@ package ex_240314;
 import java.io.FileWriter;
 import java.io.InputStreamReader;
 
-public class Ex_01_FileIO_String_2_input_console_output_file {
+public class Ex_02_FileIO_String_2_input_console_output_file {
 
 	public static void main(String[] args) {
 		// 문자를 읽을 때, 사용하는 도구
@@ -19,7 +19,7 @@ public class Ex_01_FileIO_String_2_input_console_output_file {
 		int c;
 		try {
 			//출력 대상 경로 지정. 
-			fileWriter = new FileWriter("c:\\temp\\test_240314.txt");
+			fileWriter = new FileWriter("c:\\temp_240314\\test_240314.txt");
 			// whille 반복문으로, 메모리에 저장된 문자들을 계속 읽어서, 
  
 			while((c = inputStreamReader.read()) != -1) {
