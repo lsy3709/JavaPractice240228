@@ -17,7 +17,8 @@ public class Ex_02_jdbc_test_2_main {
 			
 			// 데이터 수정 기능 구현. 
 			// 아이디 : lsy, pwd : 123456, name: 이상용이름변경 
-			Ex_02_jdbc_test_2_dao.update("123456", "이상용이름변경");
+			// public static void update(String id, String pwd, String name)
+			Ex_02_jdbc_test_2_dao.update("lsy","123456", "이상용이름변경");
 			Ex_02_jdbc_test_2_dao.select();
 			
 		} catch (ClassNotFoundException e) {
