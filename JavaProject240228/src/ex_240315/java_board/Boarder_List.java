@@ -15,6 +15,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import ex_240311_jdbc_member_with_swing_oracle.MemberDAO;
+import ex_240311_jdbc_member_with_swing_oracle.MemberProc;
 import ex_240311_jdbc_member_with_swing_oracle.Member_List;
 
 public class Boarder_List extends JFrame implements MouseListener, ActionListener {
@@ -107,7 +108,12 @@ public class Boarder_List extends JFrame implements MouseListener, ActionListene
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		// 버튼을 클릭하면
+		if (e.getSource() == btnInsert) {
+			new Boarder_Proc(this);
+
+
+		}
 
 	}
 
