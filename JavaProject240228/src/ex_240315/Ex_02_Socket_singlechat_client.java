@@ -53,7 +53,10 @@ public class Ex_02_Socket_singlechat_client {
 			// 클라이언트와 서버가 socket이라는 인스턴스를 이용해서, 통신할 예정.
 
 			// 수락도 서버가 해서, 제외.
-//			 socket = listener.accept();			 
+//			 socket = listener.accept();	
+			
+			// 클라이언트는 , 연결 시도하는 로직이 필요. 
+			socket = new Socket("localhost",9999);
 
 			// 데이터를 주고받는 로직. 파일의 IO, 데코레이터 패턴으로,
 			// 보조 스트림이 , 기반 스트림을 감싸는 작업.
