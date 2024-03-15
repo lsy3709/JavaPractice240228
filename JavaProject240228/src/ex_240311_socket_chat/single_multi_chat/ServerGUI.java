@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -15,10 +16,21 @@ public class ServerGUI extends JFrame implements ActionListener {
 	private JTextArea jta = new JTextArea(40, 25);
 	private JTextField jtf = new JTextField(25);
 	private ServerBackground server = new ServerBackground();
+	
+	// JTextArea 스크롤 패널 붙이기 
+//	JTextArea txtLog = new JTextArea();
+	JScrollPane scrollPane = new JScrollPane(jta, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+			JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+//	contentPane.add(scrollPane);
+//	출처: https://unikys.tistory.com/211 [All-round programmer:티스토리]
 
 	public ServerGUI() throws IOException {
 
 		add(jta, BorderLayout.CENTER);
+		scrollPane.setVisible(true);
+		
+		
+		add(scrollPane, BorderLayout.EAST);
 		add(jtf, BorderLayout.SOUTH);
 		jtf.addActionListener(this);
 

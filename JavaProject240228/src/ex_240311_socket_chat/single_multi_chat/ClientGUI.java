@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.Scanner;
  
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
  
@@ -19,7 +20,13 @@ public class ClientGUI extends JFrame implements ActionListener{
     private ClientBackground client = new ClientBackground();
     private static String nickName;
     
+    // 스크롤 붙이기
+    JScrollPane scrollPane = new JScrollPane(jta, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+			JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+    
     public ClientGUI(){
+    	add(scrollPane, BorderLayout.EAST);
+    	scrollPane.setVisible(true);
         
         add(jta, BorderLayout.CENTER);
         add(jtf, BorderLayout.SOUTH);
