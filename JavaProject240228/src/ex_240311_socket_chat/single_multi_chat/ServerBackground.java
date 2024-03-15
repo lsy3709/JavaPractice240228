@@ -13,6 +13,9 @@ import java.util.Map;
 import javax.sound.midi.Receiver;
  
 public class ServerBackground {
+	// 클라이언트, 서버 연결 부분
+	// 연결 후 메세지 전달 부분. 
+	// 스레드 부분, 멀티 채팅을 할 때, 스레드 이용해서, 동시에 쓰고, 받기가 가능하게.
  
     private ServerSocket serverSocket; // 서버 소켓
     private Socket socket; // 받아올 소켓 저장

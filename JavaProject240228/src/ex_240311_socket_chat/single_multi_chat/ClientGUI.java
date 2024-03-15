@@ -31,7 +31,7 @@ public class ClientGUI extends JFrame implements ActionListener {
 //				container.add(new JScrollPane(jta));
 
 		// 보더 레이아웃
-		container.setLayout(new FlowLayout());
+		container.setLayout(new BorderLayout());
 		container.add(jta, BorderLayout.CENTER);
 		container.add(jtf, BorderLayout.SOUTH);
 		container.add(new JScrollPane(jta), BorderLayout.CENTER);
