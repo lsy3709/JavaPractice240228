@@ -26,7 +26,7 @@ public class ClientBackground {
     //클라이언트 접속이 완료되면 
     public void connect(){
         try {
-            socket = new Socket("127.0.0.1", 7777);
+            socket = new Socket("10.100.104.27", 7777);
             System.out.println("서버에 연결됨");
             
             out = new DataOutputStream(socket.getOutputStream());

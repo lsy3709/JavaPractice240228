@@ -56,7 +56,7 @@ public class Ex_02_Socket_singlechat_client {
 //			 socket = listener.accept();	
 			
 			// 클라이언트는 , 연결 시도하는 로직이 필요. 
-			socket = new Socket("localhost",9999);
+			socket = new Socket("10.100.104.15",9999);
 
 			// 데이터를 주고받는 로직. 파일의 IO, 데코레이터 패턴으로,
 			// 보조 스트림이 , 기반 스트림을 감싸는 작업.
