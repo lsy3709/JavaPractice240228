@@ -41,10 +41,16 @@ public class README {
 	content varchar2(2000) NOT NULL,
 	regDate varchar2(30) NOT NULL,
     viewsCount int(20) NOT NULL,
-	
-	
-		    CONSTRAINT pk_boarder_java PRIMARY KEY(id)  -- 기본키 지정
+   CONSTRAINT pk_boarder_java PRIMARY KEY(id)  -- 기본키 지정
 		);
 	*/
+
+	/*
+	 샘플로 데이터 한번 입력 해보기. 
+	 insert into BOARDER_JAVA values (boarder_seq.NEXTVAL,'이상용','제목1','내용1','2024-03-15:16:25:00',0);
+	 */
+//	조회해서 자동 증가하는 부분 확인함.
+//	select * from BOARDER_JAVA;
+	
 	
 }
