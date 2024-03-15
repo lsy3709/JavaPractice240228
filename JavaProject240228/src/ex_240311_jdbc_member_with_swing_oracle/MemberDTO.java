@@ -1,6 +1,14 @@
 package ex_240311_jdbc_member_with_swing_oracle;
 
 public class MemberDTO {
+	// 모델클래스, 
+	// DTO(Data Transfer Object) , 
+	// 제너릭 , 설명할 때, 장난감 비유. 
+	// 상자에 담을 때, Object 담으면, 담기는 편하지만, 꺼낼 때 힘들다. 
+	// 모델을 이용하자 . DTO 
+	
+	// 게시판을 만들 때, 
+	// 게시판에 작성하는 항목 요소를,여기에 정의할 예정. 
 	  private String id;
 	    private String pwd;
 	    private String name;

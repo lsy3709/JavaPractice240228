@@ -7,6 +7,8 @@ import javax.swing.table.DefaultTableModel;
  
 //DB 처리
 public class MemberDAO {
+	// DAO(Data Access Object),
+	// 자바에서, DB에 전달하는 기능. crud 
  
     private static final String DRIVER
         = "oracle.jdbc.driver.OracleDriver";
@@ -15,6 +17,7 @@ public class MemberDAO {
    
     private static final String USER = "system"; //DB ID
     private static final String PASS = "oracle"; //DB 패스워드
+    // 회원의 정보들을 출력하는 리스트 
     Member_List mList;
    
     public MemberDAO() {
@@ -83,7 +86,8 @@ public class MemberDAO {
     /**멤버리스트 출력*/
     public Vector getMemberList(){
        
-        Vector data = new Vector();  //Jtable에 값을 쉽게 넣는 방법 1. 2차원배열   2. Vector 에 vector추가
+        Vector data = new Vector();  
+        //Jtable에 값을 쉽게 넣는 방법 1. 2차원배열   2. Vector 에 vector추가
        
            
         Connection con = null;       //연결

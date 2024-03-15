@@ -319,6 +319,7 @@ public class MemberProc extends JFrame implements ActionListener {
    private void insertMember(){
       
        //화면에서 사용자가 입력한 내용을 얻는다.
+	   // 한명의 회원의 정보를 담아 두는 모델 객체. 
        MemberDTO dto = getViewData();
        MemberDAO dao = new MemberDAO();       
        boolean ok = dao.insertMember(dto);
@@ -337,6 +338,10 @@ public class MemberProc extends JFrame implements ActionListener {
       
    }//insertMember
   
+   // 한명의 회원 정보를 가져오는 메서드 
+   // 게시판에서 한 게시글의 정보를 출력할 때, 
+   // 예) 게시판 목록 -> 한 게시글의 상세 정보를 조회시 활용하기. 
+   // 이 메서드의 리턴의 타입은, 회원 정보를 가지고 있는 : MemberDTO 타입. 
    public MemberDTO getViewData(){
       
        //화면에서 사용자가 입력한 내용을 얻는다.
