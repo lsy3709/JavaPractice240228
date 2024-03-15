@@ -1,6 +1,8 @@
 package ex_240311_socket_chat.single_multi_chat;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -19,19 +21,26 @@ public class ServerGUI extends JFrame implements ActionListener {
 	
 	// JTextArea 스크롤 패널 붙이기 
 //	JTextArea txtLog = new JTextArea();
-	JScrollPane scrollPane = new JScrollPane(jta, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-			JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+//	JScrollPane scrollPane = new JScrollPane(jta, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+//			JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+	
+	
 //	contentPane.add(scrollPane);
 //	출처: https://unikys.tistory.com/211 [All-round programmer:티스토리]
 
 	public ServerGUI() throws IOException {
-
-		add(jta, BorderLayout.CENTER);
-		scrollPane.setVisible(true);
+		//현재 , 보더 레이아웃 
+		// 플로우 레이아웃으로 변경해서, 확인 해보기. 
+		Container container = getContentPane();
+		container.setLayout(new FlowLayout());
+		container.add(jta);
+		container.add(jtf);
+		container.add(new JScrollPane(jta));
 		
 		
-		add(scrollPane, BorderLayout.EAST);
-		add(jtf, BorderLayout.SOUTH);
+//		add(jta, BorderLayout.CENTER);	
+//		add(scrollPane, BorderLayout.EAST);
+//		add(jtf, BorderLayout.SOUTH);
 		jtf.addActionListener(this);
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
