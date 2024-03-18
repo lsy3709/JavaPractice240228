@@ -78,6 +78,9 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	       btnInsert.setEnabled(false);
 	       // 화면에서 안보이게 설정
 	       btnInsert.setVisible(false);
+	       
+	       // 작성자는 읽기 전용 
+	       tfWriter.setEnabled(false);
 	       this.boarder_List = boarder_List;
 	      
 	      
@@ -305,6 +308,24 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	       }          
 	      
 	   }//deleteMember
+	 
+	 // 수정하기. 
+	 private void UpdateBoarder() {
+	      
+	       //1. 화면의 정보를 얻는다.
+	       Boarder_DTO dto = getViewData();     
+	       //2. 그정보로 DB를 수정
+	       Boarder_DAO dao = new Boarder_DAO();
+	       // 실제 디비에 반영하는 메서드.
+	       boolean ok = dao.updateBoarder(dto);
+	      
+	       if(ok){
+	           JOptionPane.showMessageDialog(this, "수정되었습니다.");
+	           this.dispose();
+	       }else{
+	           JOptionPane.showMessageDialog(this, "수정실패: 값을 확인하세요");   
+	       }
+	   }
 
 }
 
