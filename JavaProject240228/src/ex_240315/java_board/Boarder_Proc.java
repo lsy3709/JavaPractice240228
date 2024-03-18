@@ -30,6 +30,10 @@ import ex_240311_jdbc_member_with_swing_oracle.MemberProc;
 import ex_240311_jdbc_member_with_swing_oracle.Member_List;
 
 public class Boarder_Proc extends JFrame implements ActionListener {
+	
+	// 삭제시 , id 가 필요한데, 임시로 담아둘 변수를 선언, 
+	static int selectedRowNumber = 0;
+	
 	// 글쓰기 창,
 	// 게시글의 상세보기 창.
 
@@ -78,6 +82,8 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	      
 	      
 	       System.out.println("id="+id);
+	       // 리스트에서 선택된 id를 전역 변수로 설정. 
+	       selectedRowNumber = id;
 	      
 	       Boarder_DAO dao = new Boarder_DAO();
 	       // 하나의 게시글을 조회를 하는 기능. 
@@ -205,7 +211,9 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 			int x = JOptionPane.showConfirmDialog(this, "정말 삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION);
 
 			if (x == JOptionPane.OK_OPTION) {
-				// deleteMember();
+				// 삭제할 아이디를 어떻게 가져올지 ?
+				// 전역으로 설정된, 선택된 id를 가져오기. 
+				 deleteBoarder(selectedRowNumber);
 			} else {
 				JOptionPane.showMessageDialog(this, "삭제를 취소하였습니다.");
 			}
@@ -278,5 +286,29 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	      
 	       return dto;
 	   } //
+	 
+	 // 게시글 삭제 기능, 삭제할 아이디 가져오기.  
+	 private void deleteBoarder(int id) {
+
+	       // 디비에 crud 작업시 사용되는 도구함. 삭제 기능 가져와서 사용하기. 
+	       Boarder_DAO dao = new Boarder_DAO();
+	       // 
+	       boolean ok = dao.deleteBoarder(id);
+	      
+	       if(ok){
+	           JOptionPane.showMessageDialog(this, "삭제완료");
+	           dispose();         
+	          
+	       }else{
+	           JOptionPane.showMessageDialog(this, "삭제실패");
+	          
+	       }          
+	      
+	   }//deleteMember
 
 }
+
+
+
+
+

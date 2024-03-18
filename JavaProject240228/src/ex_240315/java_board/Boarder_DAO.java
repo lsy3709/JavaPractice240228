@@ -238,5 +238,39 @@ public class Boarder_DAO {
        
         return dto;    
     }
+    
+    // 게시글 삭제 
+    // 예전에는, 탈퇴 여부 상태 변수를 이용해서, 회원정보를 가지고 있었다면, 
+    // 이제는 개인정보처리방침이 변경이되어서, 회원이 요청, 탈퇴시, 
+    // 해당 데이터를 어떻게 처리할지는 명확히 명시 해야함. 
+    // 나의 정보를 모두 삭제 도 가능하게 해주어야하고, 
+    // 개인정보포털 사이트,
+    // https://www.privacy.go.kr/front/per/inf/perInfStep01.do
+    // 공식 문서 작성 가이드 이용해서, 반드시 만들어야함. 
+    // 사이트, 모바일 , 게시. 
+    // 게시글, 로그인 후 -> 작성.
+    // 내가 작성한 글만 , 수정, 삭제 할수 있음. 
+    // 로그인, 회원가입 없어서, 일단, 단순 삭제만 구현중. 
+    public boolean deleteBoarder(int id){
+        
+        boolean ok =false ;
+        Connection con =null;
+        PreparedStatement ps =null;
+       
+        try {
+            con = getConn();
+            String sql = "delete from BOARDER_JAVA where id=?";
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            
+            int r = ps.executeUpdate(); // 실행 -> 삭제
+           
+            if (r>0) ok=true; //삭제됨;
+           
+        } catch (Exception e) {
+            System.out.println(e + "-> 오류발생");
+        }      
+        return ok;
+    }
 
 }
