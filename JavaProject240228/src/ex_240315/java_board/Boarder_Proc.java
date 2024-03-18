@@ -170,20 +170,50 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 		// 화면에서 사용자가 입력한 내용을 얻는다.
 		// 한명의 회원의 정보를 담아 두는 모델 객체.
 		// 잠시 스탑.
-//		Boarder_DTO dto = getViewData();
-//		Boarder_DAO dao = new Boarder_DAO();
-//		boolean ok = dao.insertMember(dto);
+		// 화면에서 입력 받은 , 작성자, 제목, 내용을 담고 있는 모델 박스(DTO)
+		// 임시 메모리에 저장이 되어있는것 -> DB 로 전달. 
+		Boarder_DTO dto = getViewData();
+		// DAO(Data Access Object), 디비로 전달하는 도구. (글쓰기, 수정, 삭제도 할 예정.)
+		Boarder_DAO dao = new Boarder_DAO();
+		// 디비에 저장하고, 리턴 완료 true 
+		boolean ok = dao.insertBoarder(dto);
 
-//		if (ok) {
-//
-//			JOptionPane.showMessageDialog(this, "가입이 완료되었습니다.");
-//			dispose();
-//
-//		} else {
-//
-//			JOptionPane.showMessageDialog(this, "가입이 정상적으로 처리되지 않았습니다.");
-//		}
+		if (ok) {
+
+			JOptionPane.showMessageDialog(this, "가입이 완료되었습니다.");
+			// 종료. 
+			dispose();
+
+		} else {
+
+			JOptionPane.showMessageDialog(this, "가입이 정상적으로 처리되지 않았습니다.");
+		}
 
 	}// insertBoarder
+	
+	// 기능: 하나의 게시글의 조회하는 목적.
+	// 게시글 작성시, 화면에 있는 글을 가지고 온다. 
+	 public Boarder_DTO getViewData(){
+	      
+	       //화면에서 사용자가 입력한 내용을 얻는다.
+		 Boarder_DTO dto = new Boarder_DTO();
+		 	// JTextField tfWriter, tfSubject;
+			// 본문의 내용
+			//JTextArea tfContent;
+	       String writer = tfWriter.getText();
+	       String subject = tfSubject.getText();
+	       String content = tfContent.getText();
+	     
+	      
+	       //dto : 게시글 하나 작성하기 위해 필요한 내용을 담고 있다.
+	       dto.setWriter(writer);
+	       dto.setSubject(subject);
+	       dto.setContent(content);
+	       
+	       // 임시로 모델 박스에, 화면에서 입력받은 내용을 메모리 임시 저장. 
+	      
+	      
+	       return dto;
+	   } //
 
 }
