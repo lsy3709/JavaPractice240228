@@ -54,6 +54,7 @@ public class Boarder_DAO {
 // 반환 : 이중 리스트를 반환한다. 리스트안에, 각각의 게시글들이 있다. 
 	public Vector getBoarderList() {
 
+		// 임시 데이터를 담을 저장 공간(메모리에 담아둠)
 		Vector data = new Vector();
 		// Jtable에 값을 쉽게 넣는 방법 1. 2차원배열 2. Vector 에 vector추가
 
@@ -68,15 +69,19 @@ public class Boarder_DAO {
 			// 날짜가 큰값이 최신 날짜임.
 			String sql = "select * from BOARDER_JAVA order by regDate desc";
 			ps = con.prepareStatement(sql);
+			// 메서드 가 실행이되면, 데이터베이스 조회한 내용이 rs 인스턴스에 임시로 저장됨. 
+			// 저장이 되는 포맷은 마치 엑셀 표와 비슷하다고 생각하시면됨.
 			rs = ps.executeQuery();
 
+			// rs 는 0행에서 대기하고 있다가, next 만나면, 다음행 1행으로 넘어가
+			// 각 컬럼별로 데이터를 가지고 오는 역할. 
 			while (rs.next()) {
-				String id = rs.getString("id");
+				int id = rs.getInt("id");
 				String writer = rs.getString("writer");
 				String subject = rs.getString("subject");
 				String content = rs.getString("content");
 				String regDate = rs.getString("regDate");
-				String viewsCount = rs.getString("viewsCount");
+				int viewsCount = rs.getInt("viewsCount");
 
 				Vector row = new Vector();
 				row.add(id);
@@ -101,6 +106,7 @@ public class Boarder_DAO {
 
 		Connection con = null;
 		PreparedStatement ps = null;
+		// 조회시 만 사용할 예정. 
 		ResultSet rs = null;
 
 		try {
@@ -151,9 +157,12 @@ public class Boarder_DAO {
 		}
 	}
 
-	/** 회원 등록 */
+	/** 게시글 등록 */
+	// Boarder_DTO dto : 하나의 게시글의 모델, 
+	// 각 글을 쓸 때, Boarder_DTO dto 하나씩 사용이됨. 
 	public boolean insertBoarder(Boarder_DTO dto) {
 
+		// 상태 변수로 사용 중, 글쓰기 메서드가 완료가 되면, true 변경 할 예정. 
 		boolean ok = false;
 
 		Connection con = null; // 연결
@@ -164,7 +173,7 @@ public class Boarder_DAO {
 			con = getConn();
 			String sql = "insert into BOARDER_JAVA(" + "id,writer,subject,content,regDate,viewsCount )"
 					+ "values(boarder_seq.NEXTVAL,?,?,?,?,?)";
-
+			// dto 에 각 게시글의 내용들이 담겨 있는 모델 박스라 생각하기.
 			ps = con.prepareStatement(sql);
 			ps.setString(1, dto.getWriter());
 			ps.setString(2, dto.getSubject());
@@ -172,6 +181,9 @@ public class Boarder_DAO {
 			ps.setString(4, dto.getRegDate());
 			ps.setInt(5, dto.getViewsCount());
 
+			// c:create => insert ,u = update ,d = delete
+			// executeUpdate
+			// 게시글을 정상 동작, 하나 의 글 작성 성공하면, 1을 리턴.
 			int r = ps.executeUpdate(); // 실행 -> 저장
 
 			if (r > 0) {

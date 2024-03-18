@@ -56,5 +56,8 @@ public class README {
 	
 //	1) 조회하는 화면, Member_List 참고하기.
 	
+	// 2) 글쓰기 폼 까지 확인. 
+	
+	// 
 	
 }

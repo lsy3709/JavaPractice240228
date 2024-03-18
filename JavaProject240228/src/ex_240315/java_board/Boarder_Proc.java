@@ -32,13 +32,13 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	   JTextField tfWriter, tfSubject ;
 	   // 본문의 내용
 	   JTextArea tfContent;
-	   JButton btnInsert, btnCancel, btnUpdate,btnDelete; //가입, 취소, 수정 , 삭제 버튼
+	   JButton btnInsert, btnCancel, btnUpdate,btnDelete; //글쓰기, 취소, 수정 , 삭제 버튼
 	  
 	   GridBagLayout gb;
 	   GridBagConstraints gbc;
 	   Boarder_List boarder_List ;
 	   
-	   public Boarder_Proc(){ //가입용 생성자
+	   public Boarder_Proc(){ //글쓰기용 생성자
 		      
 	       createUI(); // UI작성해주는 메소드
 	       btnUpdate.setEnabled(false);
@@ -61,10 +61,15 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	   
 	   private void createUI(){
 	       this.setTitle("글쓰기 폼");
+	       // 표 형태의 배치 관리자. 4 x 2, 행 x 열  
 	       gb = new GridBagLayout();
+	       // 정렬 형태를 지정.
 	       setLayout(gb);
+	       // 표 형태의 옵션, 가로 , 세로 크기, 또는 전체를 가득 채우기 등. 
 	       gbc = new GridBagConstraints();
+	       // 가로 , 세로 가득 채우기.
 	       gbc.fill = GridBagConstraints.BOTH;
+	       // 크기 
 	       gbc.weightx = 1.0;
 	       gbc.weighty = 1.0;
 	      
@@ -78,7 +83,7 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	      
 	       //제목
 	       JLabel bPwd = new JLabel("제목 : ");
-	       tfSubject = new JPasswordField(20);
+	       tfSubject = new JTextField(20);
 	       gbAdd(bPwd, 0, 1, 1, 1);
 	       gbAdd(tfSubject, 1, 1, 3, 1);
 	      

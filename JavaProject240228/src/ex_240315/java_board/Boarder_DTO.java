@@ -1,6 +1,7 @@
 package ex_240315.java_board;
 
 public class Boarder_DTO {
+	// DTO(Data Transfer Object) , 모델 객체. 
 	// 디비의 컬럼의 내용과 동일하고
 	// 게터 세터를 만들기.
 	// 자동 생성. 
