@@ -199,5 +199,44 @@ public class Boarder_DAO {
 
 		return ok;
 	}// insertMmeber
+	
+	//하나의 게시글 정보 가져오는 기능
+
+    public Boarder_DTO getBoarderDTO(int id){
+       
+    	// 임시로 메모리 담아둘 공간. 
+    	Boarder_DTO dto = new Boarder_DTO();
+       
+        Connection con = null;       //연결
+        PreparedStatement ps = null; //명령
+        ResultSet rs = null;         //결과
+       
+        try {
+           
+            con = getConn();
+            String sql = "select * from BOARDER_JAVA where id=?";
+            // sql 를 전달하는 기능. 
+            ps = con.prepareStatement(sql);
+            // ? 동적 매개변수에 값을 넣기
+            ps.setInt(1, id);
+           // 조회시 사용하는 메서드
+            rs = ps.executeQuery();
+           // 하나의 게시글을 받아와서, 각 컬럼을 반복문으로 순회하면서, 값을 가져오기. 
+            // 가져온 데이터를, dto 라는 게시글을 담는 박스에 담기. 
+            if(rs.next()){
+                dto.setId(rs.getInt("id"));
+                dto.setWriter(rs.getString("writer"));
+                dto.setSubject(rs.getString("subject"));
+                dto.setContent(rs.getString("content"));
+                dto.setRegDate(rs.getString("regDate"));
+                dto.setViewsCount(rs.getInt("viewsCount"));
+               
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }      
+       
+        return dto;    
+    }
 
 }

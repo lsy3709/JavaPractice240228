@@ -64,6 +64,72 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 		this.boarder_List = boarder_List;
 
 	}// 생성자
+	
+	// 생성자, 매개변수 2개, 
+	public Boarder_Proc(int id,Boarder_List boarder_List){ // 수정/삭제용 생성자
+	       createUI();
+	       // 수정하기 위한 화면으로 사용해서, 글쓰기 버튼 기능 비활성화, 
+	       btnInsert.setEnabled(false);
+	       // 화면에서 안보이게 설정
+	       btnInsert.setVisible(false);
+	       this.boarder_List = boarder_List;
+	      
+	      
+	       System.out.println("id="+id);
+	      
+	       Boarder_DAO dao = new Boarder_DAO();
+	       // 하나의 게시글을 조회를 하는 기능. 
+	       Boarder_DTO vMem = dao.getBoarderDTO(id);
+//	       viewData(vMem);
+	      
+	      
+	   }//id를 가지고 생성
+	
+	//MemberDTO 의 회원 정보를 가지고 화면에 셋팅해주는 메소드
+	// 하나의 게시글 정보를 가지고, 화면에 넣는 작업.
+	
+//	   private void viewData(MemberDTO vMem){
+//	      
+//	       String id = vMem.getId();
+//	       String pwd = vMem.getPwd();
+//	       String name = vMem.getName();
+//	       String tel = vMem.getTel();
+//	       String addr = vMem.getAddr();
+//	       String birth = vMem.getBirth();
+//	       String job = vMem.getJob();
+//	       String gender = vMem.getGender();
+//	       String email= vMem.getEmail();
+//	       String intro = vMem.getIntro();    
+//	      
+//	       //화면에 세팅
+//	       tfId.setText(id);
+//	       tfId.setEditable(false); //편집 안되게
+//	       pfPwd.setText(""); //비밀번호는 안보여준다.
+//	       tfName.setText(name);
+//	       String[] tels = tel.split("-");
+//	       tfTel1.setText(tels[0]);
+//	       tfTel2.setText(tels[1]);
+//	       tfTel3.setText(tels[2]);
+//	       tfAddr.setText(addr);
+//	      
+//	       tfYear.setText(birth.substring(0, 4));
+//	       tfMonth.setText(birth.substring(4, 6));
+//	       tfDate.setText(birth.substring(6, 8));
+//	      
+//	       cbJob.setSelectedItem(job);
+//	      
+//	      
+//	       if(gender.equals("M")){
+//	           rbMan.setSelected(true);
+//	       }else if(gender.equals("W")){
+//	           rbWoman.setSelected(true);
+//	       }
+//	      
+//	       tfEmail.setText(email);
+//	       taIntro.setText(intro);
+//	  
+//	      
+//	   }//viewData
 
 	private void createUI() {
 		this.setTitle("글쓰기 폼");

@@ -106,20 +106,34 @@ public class Boarder_List extends JFrame implements MouseListener, ActionListene
 
 	}
 
+	// 버튼 클릭시 이벤트 처리.
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// 버튼을 클릭하면
 		if (e.getSource() == btnInsert) {
 			new Boarder_Proc(this);
 
-
 		}
 
 	}
 
+	// 리스트 -> 한 게시글 선택 -> 새로운 창 나오고
+	// 그 창에 -> 하나의 게시글 정보를 불러오기 -> 해당 화면에 넣기.
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
+		// mouseClicked 만 사용
+		// 클릭시 해당 번호를 가지고 온다.
+		int r = jTable.getSelectedRow();
+		System.out.println("클릭시 클릭된 행번호 확인: " + r);
+		// 테이블에서 선택된 행의 첫번째 컬럼의 값을 가져오는데, 반환 타입 Object, 
+		// Object -> Integer -> int , 형변환
+		int id = (Integer) jTable.getValueAt(r, 0);
+		System.out.println("클릭시 클릭된 id 조회: " + id);
+		// System.out.println("id="+id);
+		// 인자, 선택된 게시글의 아이디와, Boarder_List 타입의 인스턴스를 전달(this)
+		// Boarder_Proc: 글쓰기 사용했던 창. 이 화면을 재사용을해서, 
+		// 수정 폼으로도 사용하고 있음. 
+		Boarder_Proc mem = new Boarder_Proc(id, this); // 아이디를 인자로 수정창 생성
 
 	}
 
