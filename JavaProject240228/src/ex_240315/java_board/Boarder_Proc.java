@@ -31,6 +31,9 @@ import ex_240311_jdbc_member_with_swing_oracle.Member_List;
 
 public class Boarder_Proc extends JFrame implements ActionListener {
 	
+	// 수정시 , 선택된 게시글의 정보를 담아둘 임시 인스턴스를 만들기. 
+	Boarder_DTO temp_Dto;
+	
 	// 삭제시 , id 가 필요한데, 임시로 담아둘 변수를 선언, 
 	static int selectedRowNumber = 0;
 	
@@ -91,6 +94,10 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	       Boarder_DAO dao = new Boarder_DAO();
 	       // 하나의 게시글을 조회를 하는 기능. 
 	       Boarder_DTO vMem = dao.getBoarderDTO(id);
+	       
+	       // 상세보기 할 때, 조회한 게시글을 임시로 담아둘 인스턴스에 할당하기. 
+	       temp_Dto = vMem;
+	       
 	       // 순서4, 모델 박스에 담아져 있는 하나의 게시글 정보를 화면에 붙이기 작업.
 	       viewData(vMem);
 	      
@@ -208,7 +215,9 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 			this.dispose(); // 창닫기 (현재창만 닫힘)
 			// system.exit(0)=> 내가 띄운 모든 창이 다 닫힘
 		} else if (ae.getSource() == btnUpdate) {
-			UpdateBoarder();
+			// 업데이트 할 때, 인자값으로, 현재 선택된 게시글의 모든 정보가 담경 있는 박스 전달. 
+			// Boarder_DTO를 전달
+			UpdateBoarder(temp_Dto);
 		} else if (ae.getSource() == btnDelete) {
 			// int x = JOptionPane.showConfirmDialog(this,"정말 삭제하시겠습니까?");
 			int x = JOptionPane.showConfirmDialog(this, "정말 삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION);
@@ -291,10 +300,11 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	   } //
 	 
 	 // 수정하기 용으로 사용할 메서드, 
-	 public Boarder_DTO getViewUpdateData(){
+	 public Boarder_DTO getViewUpdateData(Boarder_DTO boarder_DTO){
 	      
-	       //화면에서 사용자가 입력한 내용을 얻는다.
-		 Boarder_DTO dto = new Boarder_DTO();
+//	       //화면에서 사용자가 입력한 내용을 얻는다.
+//		 Boarder_DTO dto = new Boarder_DTO();
+		 
 		 	// JTextField tfWriter, tfSubject;
 			// 본문의 내용
 			//JTextArea tfContent;
@@ -308,14 +318,14 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	      
 	       // 입력 받은 값을 넣는 작업. 
 	       //dto : 게시글 하나 작성하기 위해 필요한 내용을 담고 있다.
-	       dto.setSubject(subject);
-	       dto.setContent(content);
+	       boarder_DTO.setSubject(subject);
+	       boarder_DTO.setContent(content);
 	       // 우리가 자동으로 넣어 주기로 했었음. 
-	       dto.setRegDate(updateDateTimeString);
+	       boarder_DTO.setRegDate(updateDateTimeString);
 	       
 	       // 임시로 모델 박스에, 화면에서 입력받은 내용을 메모리 임시 저장. 
 	      
-	       return dto;
+	       return boarder_DTO;
 	   } //
 	 
 	 // 게시글 삭제 기능, 삭제할 아이디 가져오기.  
@@ -338,11 +348,11 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	   }//deleteMember
 	 
 	 // 수정하기. 
-	 private void UpdateBoarder() {
+	 private void UpdateBoarder(Boarder_DTO boarder_DTO) {
 	      
 	       //1. 화면의 정보를 얻는다.
 		 // 수정 중이라서, 변경된 데이터를 가져와서, -> 박스 모델 담아서(Boarder_DTO dto 담기)
-	       Boarder_DTO dto = getViewData();     
+	       Boarder_DTO dto = getViewUpdateData(temp_Dto);     
 	       //2. 그정보로 DB를 수정
 	       Boarder_DAO dao = new Boarder_DAO();
 	       // 실제 디비에 반영하는 메서드.
