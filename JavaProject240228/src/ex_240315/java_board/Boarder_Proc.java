@@ -75,6 +75,9 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	// 생성자, 매개변수 2개, 
 	// 순서3 
 	// 화면을 그려주는 작업.
+	
+	// 업데이트 순서2, : 글쓰기 폼 화면을 재사용중. 
+	// int id : 게시글의 아이디입니다. 
 	public Boarder_Proc(int id,Boarder_List boarder_List){ // 수정/삭제용 생성자
 	       createUI();
 	       // 수정하기 위한 화면으로 사용해서, 글쓰기 버튼 기능 비활성화, 
@@ -93,6 +96,7 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	      
 	       Boarder_DAO dao = new Boarder_DAO();
 	       // 하나의 게시글을 조회를 하는 기능. 
+	       // 박스에, 해당 게시글 아이디로 조회해서, 조회된 내용을 박스에 담아두기. 
 	       Boarder_DTO vMem = dao.getBoarderDTO(id);
 	       
 	       // 상세보기 할 때, 조회한 게시글을 임시로 담아둘 인스턴스에 할당하기. 
@@ -214,9 +218,14 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 		} else if (ae.getSource() == btnCancel) {
 			this.dispose(); // 창닫기 (현재창만 닫힘)
 			// system.exit(0)=> 내가 띄운 모든 창이 다 닫힘
+			
+			// 업데이트 순서3,
 		} else if (ae.getSource() == btnUpdate) {
 			// 업데이트 할 때, 인자값으로, 현재 선택된 게시글의 모든 정보가 담경 있는 박스 전달. 
 			// Boarder_DTO를 전달
+			// 상세 보기로 클릭시 , 박스에 담아 두었던 게시글 의 내용을 임시 박스에 담아서 전달
+			// 수정을 할려고하는 우리는 제목, 내용만 변경하면되고, 
+			// 기존 내용은 불러왔음. 
 			UpdateBoarder(temp_Dto);
 		} else if (ae.getSource() == btnDelete) {
 			// int x = JOptionPane.showConfirmDialog(this,"정말 삭제하시겠습니까?");
@@ -300,6 +309,8 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	   } //
 	 
 	 // 수정하기 용으로 사용할 메서드, 
+	// 업데이트 순서5,
+	 // Boarder_DTO boarder_DTO , 기존 게시글의 정보가 담겨 있다.
 	 public Boarder_DTO getViewUpdateData(Boarder_DTO boarder_DTO){
 	      
 //	       //화면에서 사용자가 입력한 내용을 얻는다.
@@ -348,14 +359,20 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	   }//deleteMember
 	 
 	 // 수정하기. 
+	// 업데이트 순서4,
+	 // Boarder_DTO boarder_DTO 여기 박스에, 기존 게시글의 정보가 들어 있다.
 	 private void UpdateBoarder(Boarder_DTO boarder_DTO) {
 	      
 	       //1. 화면의 정보를 얻는다.
 		 // 수정 중이라서, 변경된 데이터를 가져와서, -> 박스 모델 담아서(Boarder_DTO dto 담기)
-	       Boarder_DTO dto = getViewUpdateData(temp_Dto);     
+		 // // 업데이트 순서5,
+	       Boarder_DTO dto = getViewUpdateData(temp_Dto);
+	       
+	       // 업데이트 순서 6, 화면에서, 제목, 내용이 변경이된 박스 모델 
 	       //2. 그정보로 DB를 수정
 	       Boarder_DAO dao = new Boarder_DAO();
 	       // 실제 디비에 반영하는 메서드.
+	       // 업데이트 순서 7.
 	       boolean ok = dao.updateBoarder(dto);
 	      
 	       if(ok){
