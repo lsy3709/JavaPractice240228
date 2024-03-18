@@ -119,6 +119,9 @@ public class Boarder_List extends JFrame implements MouseListener, ActionListene
 
 	// 리스트 -> 한 게시글 선택 -> 새로운 창 나오고
 	// 그 창에 -> 하나의 게시글 정보를 불러오기 -> 해당 화면에 넣기.
+	// 상세 보기 순서
+	// 순서1 , 
+	// 게시판 목록에서, 클릭시 이벤트 처리
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// mouseClicked 만 사용
@@ -133,6 +136,8 @@ public class Boarder_List extends JFrame implements MouseListener, ActionListene
 		// 인자, 선택된 게시글의 아이디와, Boarder_List 타입의 인스턴스를 전달(this)
 		// Boarder_Proc: 글쓰기 사용했던 창. 이 화면을 재사용을해서, 
 		// 수정 폼으로도 사용하고 있음. 
+		// 순서2 , 
+		// 글쓰기 때 사용했던, 뷰를 재사용하는 부분. 
 		Boarder_Proc mem = new Boarder_Proc(id, this); // 아이디를 인자로 수정창 생성
 
 	}
