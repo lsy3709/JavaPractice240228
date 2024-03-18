@@ -7,6 +7,8 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -181,13 +183,13 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 
 		if (ok) {
 
-			JOptionPane.showMessageDialog(this, "가입이 완료되었습니다.");
+			JOptionPane.showMessageDialog(this, "글쓰기 성공.");
 			// 종료. 
 			dispose();
 
 		} else {
 
-			JOptionPane.showMessageDialog(this, "가입이 정상적으로 처리되지 않았습니다.");
+			JOptionPane.showMessageDialog(this, "글쓰기 실패.");
 		}
 
 	}// insertBoarder
@@ -206,6 +208,8 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	       String content = tfContent.getText();
 	       // 등록 날짜, 자동
 	       String regDate = LocalDate.now().toString();
+	       String regTime = LocalTime.now().toString();
+	       String regDateTimeString = regDate + regTime ;
 //	       String regDate2 = regDate.toString();
 	       // 조회수 카운트, 자동
 	       int viewsCount = 0;
@@ -217,7 +221,7 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	       dto.setSubject(subject);
 	       dto.setContent(content);
 	       // 우리가 자동으로 넣어 주기로 했었음. 
-	       dto.setRegDate(regDate);
+	       dto.setRegDate(regDateTimeString);
 	       dto.setViewsCount(viewsCount);
 	       
 	       // 임시로 모델 박스에, 화면에서 입력받은 내용을 메모리 임시 저장. 
