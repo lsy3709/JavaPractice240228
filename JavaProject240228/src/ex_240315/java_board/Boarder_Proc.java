@@ -290,6 +290,34 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	       return dto;
 	   } //
 	 
+	 // 수정하기 용으로 사용할 메서드, 
+	 public Boarder_DTO getViewUpdateData(){
+	      
+	       //화면에서 사용자가 입력한 내용을 얻는다.
+		 Boarder_DTO dto = new Boarder_DTO();
+		 	// JTextField tfWriter, tfSubject;
+			// 본문의 내용
+			//JTextArea tfContent;
+	       String subject = tfSubject.getText();
+	       String content = tfContent.getText();
+	       // 등록 날짜, 자동
+	       String updateDate = LocalDate.now().toString();
+	       String updateTime = LocalTime.now().toString();
+	       String updateDateTimeString = updateDate + updateTime ;
+
+	      
+	       // 입력 받은 값을 넣는 작업. 
+	       //dto : 게시글 하나 작성하기 위해 필요한 내용을 담고 있다.
+	       dto.setSubject(subject);
+	       dto.setContent(content);
+	       // 우리가 자동으로 넣어 주기로 했었음. 
+	       dto.setRegDate(updateDateTimeString);
+	       
+	       // 임시로 모델 박스에, 화면에서 입력받은 내용을 메모리 임시 저장. 
+	      
+	       return dto;
+	   } //
+	 
 	 // 게시글 삭제 기능, 삭제할 아이디 가져오기.  
 	 private void deleteBoarder(int id) {
 
@@ -313,6 +341,7 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	 private void UpdateBoarder() {
 	      
 	       //1. 화면의 정보를 얻는다.
+		 // 수정 중이라서, 변경된 데이터를 가져와서, -> 박스 모델 담아서(Boarder_DTO dto 담기)
 	       Boarder_DTO dto = getViewData();     
 	       //2. 그정보로 DB를 수정
 	       Boarder_DAO dao = new Boarder_DAO();
