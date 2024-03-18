@@ -208,7 +208,7 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 			this.dispose(); // 창닫기 (현재창만 닫힘)
 			// system.exit(0)=> 내가 띄운 모든 창이 다 닫힘
 		} else if (ae.getSource() == btnUpdate) {
-			// UpdateMember();
+			UpdateBoarder();
 		} else if (ae.getSource() == btnDelete) {
 			// int x = JOptionPane.showConfirmDialog(this,"정말 삭제하시겠습니까?");
 			int x = JOptionPane.showConfirmDialog(this, "정말 삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION);
